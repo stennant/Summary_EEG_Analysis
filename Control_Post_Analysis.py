@@ -16,9 +16,9 @@ def main():
     print('-------------------------------------------------------------')
 
     #path to the recording .dat file
-    sleep_state_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/SYNGAPE8_3138/SYNGAPE8_3138_BL1-dge_swd.csv'
-    seizure_times_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/SYNGAPE8_3138/24h/seiz/SYNGAPE8_3138_BL1_Seizures.csv'
-    output_path = ('/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/SYNGAPE8_3138/')
+    sleep_state_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/SYNGAPE8_3131/SYNGAPE8_3131_BL1-dge_swd.csv'
+    seizure_times_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/SYNGAPE8_3131/24h/seiz/SYNGAPE8_3131_BL1_Seizures.csv'
+    output_path = ('/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/SYNGAPE8_3131/')
 
     SleepScore_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path)
     Seizure_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path)
