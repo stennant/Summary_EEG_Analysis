@@ -1,11 +1,21 @@
-import math
+"""
+Author: Sarah Tennant
+Date: 8/8/2024
+Script: Seizure_Analysis.py
 
+Description: This script loads the seizure csv output from Matlab which contains the start, end time and duration of each
+seizure for one animal and plots the distribution of seizure durations and other various parameters of seizures in the
+selected recording
+
+"""
+
+# import packages
 from pylab import *
-from mne import io
 import pandas as pd
-import itertools
-import os
 import numpy as np
+
+# import scripts
+import Plots
 
 
 def process_dir(file_path):
@@ -27,21 +37,6 @@ def bin_seizure_durations(data):
     H, bins = np.histogram(durations, bins=(posrange), range=values)
     return H, bins
 
-def plot_seizure_durations(durations, output_path):
-
-    percent_histogram = plt.figure(figsize=(6, 4))
-    ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
-    ax.bar(np.arange(60), durations, color= "black")
-    plt.ylabel('Number of seizures', fontsize=12, labelpad=10)
-    plt.xlabel('Time bins (seconds)', fontsize=12, labelpad=10)
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.yaxis.set_ticks_position('left')
-    ax.xaxis.set_ticks_position('bottom')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
-    plt.savefig(output_path + '/seizure_durations' + '.png', dpi=200)
-
-
 def save_binned_seizure_durations_to_csv(durations, output_path):
     df = pd.DataFrame({'bin_number': np.arange(0,60), 'count': durations})
     df.to_csv(output_path + 'binned_seizure_durations.csv', sep='\t', encoding='utf-8', index=False, header=True)
@@ -55,20 +50,6 @@ def bin_seizure_start_times(data):
     H, bins = np.histogram(start_times, bins=(posrange), range=values)
     return H, bins
 
-
-def plot_seizure_start_times(durations, output_path):
-
-    percent_histogram = plt.figure(figsize=(6, 4))
-    ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
-    ax.bar(np.arange(24), durations, color= "black")
-    plt.ylabel('Number of seizures', fontsize=12, labelpad=10)
-    plt.xlabel('Time (hours)', fontsize=12, labelpad=10)
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.yaxis.set_ticks_position('left')
-    ax.xaxis.set_ticks_position('bottom')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
-    plt.savefig(output_path + '/seizure_start_times' + '.png', dpi=200)
 
 
 def save_seizure_count_per_hour_to_csv(start_times, output_path):
@@ -134,15 +115,20 @@ def Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path):
 
     # BIN SEIZURE DURATIONS
     durations, bins = bin_seizure_durations(data)
-    plot_seizure_durations(durations, output_path)
+    Plots.plot_seizure_durations(durations, output_path)
     save_binned_seizure_durations_to_csv(durations, output_path)
 
     start_times, bins = bin_seizure_start_times(data)
-    plot_seizure_start_times(start_times, output_path)
+    Plots.plot_seizure_start_times(start_times, output_path)
     save_seizure_count_per_hour_to_csv(start_times, output_path)
 
     df = calculate_seizures_around_sleep(sleep_state_path, np.array(data['sec_start']),  np.array(data['dur']))
     save_seizure_data_to_csv(df, output_path)
+
+
+"""
+This is for testing!!
+"""
 
 def main():
     print('-------------------------------------------------------------')
@@ -158,11 +144,11 @@ def main():
 
     # BIN SEIZURE DURATIONS
     durations, bins = bin_seizure_durations(data)
-    plot_seizure_durations(durations, output_path)
+    Plots.plot_seizure_durations(durations, output_path)
     save_binned_seizure_durations_to_csv(durations, output_path)
 
     start_times, bins = bin_seizure_start_times(data)
-    plot_seizure_start_times(start_times, output_path)
+    Plots.plot_seizure_start_times(start_times, output_path)
     save_seizure_count_per_hour_to_csv(start_times, output_path)
 
     df = calculate_seizures_around_sleep(sleep_state_path, np.array(data['sec_start']),  np.array(data['dur']))
