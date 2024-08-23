@@ -1,15 +1,22 @@
-import math
+"""
+Author: Sarah Tennant
+Date: 8/8/2024
+Script: Seizure_Correction.py
 
+Description: This script takes the sleep score csv that is output from R, and the seizure csv output from Matlab,
+and checks that every seizure is recorded correctly in the sleep score
+
+"""
+
+# import packages
 from pylab import *
-from mne import io
 import pandas as pd
-import itertools
-import os
 import numpy as np
 
 
 def round_down(num, divisor):
     return num - (num % divisor)
+
 
 def correct_seizures(data, seizure_times_path):
     # Load seizure correction from .csv
