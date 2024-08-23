@@ -3,15 +3,21 @@ from pylab import *
 import numpy as np
 
 
-def plot_total_states(total_epochs_for_each_state, output_path):
+def plot_total_states(df, output_path):
 
+    wake = df.loc[0,"total_minutes_wake"]
+    nrem = df.loc[0,"total_minutes_nrem"]
+    rem = df.loc[0,"total_minutes_rem"]
+    swd = df.loc[0,"total_minutes_swd"]
+
+    total_mins_for_each_state = [wake, nrem, rem, swd]
     color = ['LightSkyBlue', 'DodgerBlue', 'Blue', 'MidnightBlue']
     bins = np.arange(4)
 
     percent_histogram = plt.figure(figsize=(6, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
-    ax.bar(bins, total_epochs_for_each_state, color= color)
-    plt.ylabel('Total number of epochs', fontsize=12, labelpad=10)
+    ax.bar(bins, total_mins_for_each_state, color= color)
+    plt.ylabel('Total time (minutes)', fontsize=12, labelpad=10)
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
     plt.locator_params(axis='x', nbins=5)
     ax.set_xticklabels(['', 'wake', 'nrem', 'rem', 'swd'])
@@ -20,19 +26,22 @@ def plot_total_states(total_epochs_for_each_state, output_path):
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
     plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
-    plt.savefig(output_path + '/total_epochs_per_state' + '.png', dpi=200)
+    plt.savefig(output_path + '/TotalTime_perstate' + '.png', dpi=200)
 
-def plot_total_states_sleep(total_epochs_for_each_state, output_path):
+def plot_total_states_sleep(df, output_path):
+
+    wake = df.loc[0,"total_minutes_wake"]
+    sleep = df.loc[0,"total_minutes_sleep"]
+    swd = df.loc[0,"total_minutes_swd"]
+    total_mins_for_each_state = [wake, sleep, swd]
 
     color = ['LightSkyBlue', 'DodgerBlue', 'MidnightBlue']
-
-    total_epochs_for_each_state_sleep = [total_epochs_for_each_state[0], total_epochs_for_each_state[1] + total_epochs_for_each_state[2], total_epochs_for_each_state[3]]
     bins = np.arange(3)
 
     percent_histogram = plt.figure(figsize=(6, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
-    ax.bar(bins, total_epochs_for_each_state_sleep, color= color)
-    plt.ylabel('Total number of epochs', fontsize=12, labelpad=10)
+    ax.bar(bins, total_mins_for_each_state, color= color)
+    plt.ylabel('Total time (minutes)', fontsize=12, labelpad=10)
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
     plt.locator_params(axis='x', nbins=4)
     ax.set_xticklabels(['', 'wake', 'sleep', 'swd'])
@@ -41,19 +50,30 @@ def plot_total_states_sleep(total_epochs_for_each_state, output_path):
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
     plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
-    plt.savefig(output_path + '/total_epochs_per_state_sleep' + '.png', dpi=200)
+    plt.savefig(output_path + '/TotalTime_perstate_sleep' + '.png', dpi=200)
 
 
 
-def plot_total_states_for_light_and_dark(total_epochs, output_path):
+def plot_total_states_for_light_and_dark(df, output_path):
+
+    wake_light = df.loc[1,"total_minutes_wake"]
+    nrem_light = df.loc[1,"total_minutes_nrem"]
+    rem_light = df.loc[1,"total_minutes_rem"]
+    swd_light = df.loc[1,"total_minutes_swd"]
+    wake_dark = df.loc[2,"total_minutes_wake"]
+    nrem_dark = df.loc[2,"total_minutes_nrem"]
+    rem_dark = df.loc[2,"total_minutes_rem"]
+    swd_dark = df.loc[2,"total_minutes_swd"]
+
+    total_time = [wake_light, nrem_light, rem_light, swd_light, wake_dark, nrem_dark, rem_dark, swd_dark]
 
     bins = np.arange(8)
     color = ['LightSkyBlue', 'DodgerBlue', 'Blue', 'MidnightBlue']
 
     percent_histogram = plt.figure(figsize=(6, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
-    ax.bar(bins, total_epochs, color= color)
-    plt.ylabel('Total number of epochs', fontsize=12, labelpad=10)
+    ax.bar(bins, total_time, color= color)
+    plt.ylabel('Total time (minutes)', fontsize=12, labelpad=10)
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
     plt.locator_params(axis='x', nbins=9)
     ax.set_xticklabels(['', 'wake', 'nrem', 'rem', 'swd', 'wake', 'nrem', 'rem', 'swd'])
@@ -61,22 +81,34 @@ def plot_total_states_for_light_and_dark(total_epochs, output_path):
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    plt.axhline(y=7000, xmin =0, xmax=0.482, color='grey', linewidth=10, alpha=0.85, zorder=0)
-    plt.axhline(y=7000, xmin =0.518, xmax=1, color='k', linewidth=10, alpha=0.85, zorder=0)
+    #plt.axhline(y=600, xmin =0, xmax=0.482, color='grey', linewidth=10, alpha=0.85, zorder=0)
+    plt.axhline(y=600, xmin =0.518, xmax=1, color='k', linewidth=10, alpha=0.85, zorder=0)
+    text(0.25, 0.95, 'Light', horizontalalignment='center',
+         verticalalignment='center', transform=ax.transAxes)
+    text(0.75, 0.95, 'Dark', horizontalalignment='center',
+         verticalalignment='center', transform=ax.transAxes, color = 'White')
     plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
-    plt.savefig(output_path + '/total_epochs_per_state_in_light_and_dark' + '.png', dpi=200)
+    plt.savefig(output_path + '/TotalTime_perstate_lightanddark' + '.png', dpi=200)
 
 
-def plot_total_states_sleep_light_and_dark(total_epochs, output_path):
+def plot_total_states_sleep_light_and_dark(df, output_path):
 
-    total_epochs_sleep = [total_epochs[0], total_epochs[1] + total_epochs[2], total_epochs[3], total_epochs[4], total_epochs[5] + total_epochs[6], total_epochs[7]]
+    wake_light = df.loc[1,"total_minutes_wake"]
+    sleep_light = df.loc[1,"total_minutes_sleep"]
+    swd_light = df.loc[1,"total_minutes_swd"]
+    wake_dark = df.loc[2,"total_minutes_wake"]
+    sleep_dark = df.loc[2,"total_minutes_sleep"]
+    swd_dark = df.loc[2,"total_minutes_swd"]
+
+    total_time = [wake_light, sleep_light, swd_light, wake_dark, sleep_dark, swd_dark]
+
     bins = np.arange(6)
-    color = ['LightSkyBlue', 'DodgerBlue', 'Blue', 'MidnightBlue']
+    color = ['LightSkyBlue', 'DodgerBlue', 'MidnightBlue']
 
     percent_histogram = plt.figure(figsize=(6, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
-    ax.bar(bins, total_epochs_sleep, color= color)
-    plt.ylabel('Total number of epochs', fontsize=12, labelpad=10)
+    ax.bar(bins, total_time, color= color)
+    plt.ylabel('Total time (minutes)', fontsize=12, labelpad=10)
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
     plt.locator_params(axis='x', nbins=7)
     ax.set_xticklabels(['', 'wake', 'sleep', 'swd', 'wake', 'sleep', 'swd'])
@@ -84,10 +116,13 @@ def plot_total_states_sleep_light_and_dark(total_epochs, output_path):
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    plt.axhline(y=7000, xmin =0, xmax=0.482, color='grey', linewidth=10, alpha=0.85, zorder=0)
-    plt.axhline(y=7000, xmin =0.518, xmax=1, color='k', linewidth=10, alpha=0.85, zorder=0)
+    plt.axhline(y=600, xmin =0.518, xmax=1, color='k', linewidth=10, alpha=0.85, zorder=0)
+    text(0.25, 0.95, 'Light', horizontalalignment='center',
+         verticalalignment='center', transform=ax.transAxes)
+    text(0.75, 0.95, 'Dark', horizontalalignment='center',
+         verticalalignment='center', transform=ax.transAxes, color = 'White')
     plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
-    plt.savefig(output_path + '/total_epochs_per_state_sleep_light_and_dark' + '.png', dpi=200)
+    plt.savefig(output_path + '/TotalTime_perstate_sleep_lightanddark' + '.png', dpi=200)
 
 
 def plot_states_per_hour(df,output_path):
