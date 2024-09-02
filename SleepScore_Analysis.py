@@ -53,18 +53,18 @@ def calculate_total_states_in_light_and_dark(data, df):
     data["time_mins"] = (data.index*5)/60 # first make column with time in minutes
 
     # calculate and save total minutes for the light period
-    df.at[1,'total_minutes_wake'] = len(data[(data['sleep.score'] == 0) & (data['time_mins'] < 720)])
-    df.at[1,'total_minutes_nrem'] = len(data[(data['sleep.score'] == 1) & (data['time_mins'] < 720)])
-    df.at[1,'total_minutes_rem'] = len(data[(data['sleep.score'] == 2) & (data['time_mins'] < 720)])
-    df.at[1,'total_minutes_swd'] = len(data[(data['sleep.score'] == 2) & (data['time_mins'] < 720)])
+    df.at[1,'total_minutes_wake'] = (len(data[(data['sleep.score'] == 0) & (data['time_mins'] < 720)])*5)/60
+    df.at[1,'total_minutes_nrem'] = (len(data[(data['sleep.score'] == 1) & (data['time_mins'] < 720)])*5)/60
+    df.at[1,'total_minutes_rem'] = (len(data[(data['sleep.score'] == 2) & (data['time_mins'] < 720)])*5)/60
+    df.at[1,'total_minutes_swd'] = (len(data[(data['sleep.score'] == 2) & (data['time_mins'] < 720)])*5)/60
     df.at[1,'total_minutes_sleep'] = float(df.at[1,'total_minutes_nrem'] + df.at[1,'total_minutes_rem'])
     df.at[1,'period'] = "light" # add a label that this data is for the light period of the recording
 
     # calculate and save total minutes for the dark period
-    df.at[2,'total_minutes_wake'] = len(data[(data['sleep.score'] == 0) & (data['time_mins'] >= 720)])
-    df.at[2,'total_minutes_nrem'] = len(data[(data['sleep.score'] == 1) & (data['time_mins'] >= 720)])
-    df.at[2,'total_minutes_rem'] = len(data[(data['sleep.score'] == 2) & (data['time_mins'] >= 720)])
-    df.at[2,'total_minutes_swd'] = len(data[(data['sleep.score'] == 2) & (data['time_mins'] >= 720)])
+    df.at[2,'total_minutes_wake'] = (len(data[(data['sleep.score'] == 0) & (data['time_mins'] >= 720)])*5)/60
+    df.at[2,'total_minutes_nrem'] = (len(data[(data['sleep.score'] == 1) & (data['time_mins'] >= 720)])*5)/60
+    df.at[2,'total_minutes_rem'] = (len(data[(data['sleep.score'] == 2) & (data['time_mins'] >= 720)])*5)/60
+    df.at[2,'total_minutes_swd'] = (len(data[(data['sleep.score'] == 2) & (data['time_mins'] >= 720)])*5)/60
     df.at[2,'total_minutes_sleep'] = float(df.at[2,'total_minutes_nrem'] + df.at[2,'total_minutes_rem'])
     df.at[2,'period'] = "dark" # add a label that this data is for the dark period of the recording
     return df
@@ -167,97 +167,48 @@ def calculate_bout_durations(data, df):
 
 
 
-
-# calculate duration of each episode/bout for each sleep state
-def calculate_duration_light(data):
-    bout_start_times = []
-    bout_end_times = []
-    bout_start = False # create a flag for whether a bout has started
-    for rowcount, row in enumerate(data):
-        current_state = data[rowcount]
-        if rowcount < 720:
-            if current_state == 1 and bout_start == False:
-                bout_start_time = rowcount
-                bout_start = True
-            elif current_state == 0 and bout_start == True:
-                bout_end_time = rowcount
-                bout_start = False
-                bout_start_times = np.append(bout_start_times, bout_start_time)
-                bout_end_times = np.append(bout_end_times, bout_end_time)
-
-    bout_durations = []
-    for rowcount, row in enumerate(range(len(bout_start_times))):
-        bout_duration = (bout_end_times[rowcount] - bout_start_times[rowcount])*5
-        bout_durations = np.append(bout_durations, bout_duration)
-    return bout_durations, bout_start_times, bout_end_times
+def calculate_light_dark_durations(durations, start_times):
+    light_durations = durations[start_times < 8640]
+    dark_durations = durations[start_times >= 8640]
+    return light_durations, dark_durations
 
 
-# calculate duration of each episode/bout for each sleep state
-def calculate_duration_dark(data):
-    bout_start_times = []
-    bout_end_times = []
-    bout_start = False # create a flag for whether a bout has started
-    for rowcount, row in enumerate(data):
-        current_state = data[rowcount]
-        if rowcount >= 720:
-            if current_state == 1 and bout_start == False:
-                bout_start_time = rowcount
-                bout_start = True
-            elif current_state == 0 and bout_start == True:
-                bout_end_time = rowcount
-                bout_start = False
-                bout_start_times = np.append(bout_start_times, bout_start_time)
-                bout_end_times = np.append(bout_end_times, bout_end_time)
+def calculate_bout_durations_light_dark(bouts_df, df):
 
-    bout_durations = []
-    for rowcount, row in enumerate(range(len(bout_start_times))):
-        bout_duration = (bout_end_times[rowcount] - bout_start_times[rowcount])*5
-        bout_durations = np.append(bout_durations, bout_duration)
-    return bout_durations, bout_start_times, bout_end_times
-
-
-
-def calculate_bout_durations_light_dark(seperate_scores_df, df):
-
-    # calculate duration of episode/bouts
-    nrem_bouts, nrem_start_times, nrem_end_times = calculate_duration_light(np.array(seperate_scores_df.loc[:, "nrem_bouts"]))
-    rem_bouts, rem_start_times, rem_end_times = calculate_duration_light(np.array(seperate_scores_df.loc[:, "rem_bouts"]))
-    wake_bouts, wake_start_times, wake_end_times = calculate_duration_light(np.array(seperate_scores_df.loc[:, "wake_bouts"]))
+    rem_light_durations, rem_dark_durations = calculate_light_dark_durations(np.array(bouts_df.loc[:, "rem_bout_durations"]), np.array(bouts_df.loc[:, "rem_bout_start_times"]))
+    nrem_light_durations, nrem_dark_durations = calculate_light_dark_durations(np.array(bouts_df.loc[:, "nrem_bout_durations"]), np.array(bouts_df.loc[:, "nrem_bout_start_times"]))
+    wake_light_durations, wake_dark_durations = calculate_light_dark_durations(np.array(bouts_df.loc[:, "wake_bout_durations"]), np.array(bouts_df.loc[:, "wake_bout_start_times"]))
 
     # store average bout durations for each sleep state
-    df.at[1,"avg_bout_duration_rem"] = np.nanmean(rem_bouts)
-    df.at[1,"avg_bout_duration_nrem"] = np.nanmean(nrem_bouts)
-    df.at[1,"avg_bout_duration_wake"] = np.nanmean(wake_bouts)
+    df.at[1,"avg_bout_duration_rem"] = np.nanmean(rem_light_durations)
+    df.at[1,"avg_bout_duration_nrem"] = np.nanmean(nrem_light_durations)
+    df.at[1,"avg_bout_duration_wake"] = np.nanmean(wake_light_durations)
 
     # store sd bout durations for each sleep state
-    df.at[1,"sd_bout_duration_rem"] = np.nanstd(rem_bouts)/np.sqrt(np.shape(rem_bouts)[0])
-    df.at[1,"sd_bout_duration_nrem"] = np.nanstd(nrem_bouts)/np.sqrt(np.shape(nrem_bouts)[0])
-    df.at[1,"sd_bout_duration_wake"] = np.nanstd(wake_bouts)/np.sqrt(np.shape(wake_bouts)[0])
+    df.at[1,"sd_bout_duration_rem"] = np.nanstd(rem_light_durations)/np.sqrt(np.shape(rem_light_durations)[0])
+    df.at[1,"sd_bout_duration_nrem"] = np.nanstd(nrem_light_durations)/np.sqrt(np.shape(nrem_light_durations)[0])
+    df.at[1,"sd_bout_duration_wake"] = np.nanstd(wake_light_durations)/np.sqrt(np.shape(wake_light_durations)[0])
 
     # store total number of bouts
-    df.at[1,"bout_num_rem"] = np.count_nonzero(rem_bouts)
-    df.at[1,"bout_num_nrem"] = np.count_nonzero(nrem_bouts)
-    df.at[1,"bout_num_wake"] = np.count_nonzero(wake_bouts)
+    df.at[1,"bout_num_rem"] = np.count_nonzero(rem_light_durations)
+    df.at[1,"bout_num_nrem"] = np.count_nonzero(nrem_light_durations)
+    df.at[1,"bout_num_wake"] = np.count_nonzero(wake_light_durations)
 
-    # calculate duration of episode/bouts
-    nrem_bouts, nrem_start_times, nrem_end_times = calculate_duration_dark(np.array(seperate_scores_df.loc[:, "nrem_bouts"]))
-    rem_bouts, rem_start_times, rem_end_times = calculate_duration_dark(np.array(seperate_scores_df.loc[:, "rem_bouts"]))
-    wake_bouts, wake_start_times, wake_end_times = calculate_duration_dark(np.array(seperate_scores_df.loc[:, "wake_bouts"]))
 
     # store average bout durations for each sleep state
-    df.at[2,"avg_bout_duration_rem"] = np.nanmean(rem_bouts)
-    df.at[2,"avg_bout_duration_nrem"] = np.nanmean(nrem_bouts)
-    df.at[2,"avg_bout_duration_wake"] = np.nanmean(wake_bouts)
+    df.at[2,"avg_bout_duration_rem"] = np.nanmean(rem_dark_durations)
+    df.at[2,"avg_bout_duration_nrem"] = np.nanmean(nrem_dark_durations)
+    df.at[2,"avg_bout_duration_wake"] = np.nanmean(wake_dark_durations)
 
     # store sd bout durations for each sleep state
-    df.at[2,"sd_bout_duration_rem"] = np.nanstd(rem_bouts)/np.sqrt(np.shape(rem_bouts)[0])
-    df.at[2,"sd_bout_duration_nrem"] = np.nanstd(nrem_bouts)/np.sqrt(np.shape(nrem_bouts)[0])
-    df.at[2,"sd_bout_duration_wake"] = np.nanstd(wake_bouts)/np.sqrt(np.shape(wake_bouts)[0])
+    df.at[2,"sd_bout_duration_rem"] = np.nanstd(rem_dark_durations)/np.sqrt(np.shape(rem_dark_durations)[0])
+    df.at[2,"sd_bout_duration_nrem"] = np.nanstd(nrem_dark_durations)/np.sqrt(np.shape(nrem_dark_durations)[0])
+    df.at[2,"sd_bout_duration_wake"] = np.nanstd(wake_dark_durations)/np.sqrt(np.shape(wake_dark_durations)[0])
 
     # store total number of bouts
-    df.at[2,"bout_num_rem"] = np.count_nonzero(rem_bouts)
-    df.at[2,"bout_num_nrem"] = np.count_nonzero(nrem_bouts)
-    df.at[2,"bout_num_wake"] = np.count_nonzero(wake_bouts)
+    df.at[2,"bout_num_rem"] = np.count_nonzero(rem_dark_durations)
+    df.at[2,"bout_num_nrem"] = np.count_nonzero(nrem_dark_durations)
+    df.at[2,"bout_num_wake"] = np.count_nonzero(wake_dark_durations)
     return df
 
 
@@ -288,8 +239,8 @@ def calculate_duration_per_hour(bouts_df):
     rem_bouts = find_hourly_durations(np.array(bouts_df.loc[:, "rem_bout_durations"]), np.array(bouts_df.loc[:, "rem_bout_start_times"]))
     wake_bouts = find_hourly_durations(np.array(bouts_df.loc[:, "wake_bout_durations"]), np.array(bouts_df.loc[:, "wake_bout_start_times"]))
 
-    hourly_df = pd.DataFrame(columns=['hour', 'rem_bout_duration_per_hour', 'nrem_bout_duration_per_hour', 'wake_bout_duration_per_hour',
-                                      'wake_epochs_per_hour','nrem_epochs_per_hour','rem_epochs_per_hour','swd_epochs_per_hour'])
+    hourly_df = pd.DataFrame(columns=['hour', 'rem_bout_duration_per_hour', 'nrem_bout_duration_per_hour', 'wake_bout_duration_per_hour', 'sleep_bout_duration_per_hour',
+                                      'wake_minutes_per_hour','nrem_minutes_per_hour','rem_minutes_per_hour','swd_minutes_per_hour','sleep_minutes_per_hour'])
     hourly_df["hour"] = pd.Series(np.arange(24))
 
     hourly_df["rem_bout_duration_per_hour"] = pd.Series(rem_bouts)
@@ -313,10 +264,11 @@ def calculate_states_per_hour(data, hourly_df):
             epoch_start = epochs_array[rowcount]
             epoch_end = epochs_array[rowcount+1]
             hourly_epochs = data[epoch_start:epoch_end]
-            hourly_df.at[rowcount,"wake_epochs_per_hour"] = np.count_nonzero(hourly_epochs == 0)
-            hourly_df.at[rowcount,"nrem_epochs_per_hour"] = np.count_nonzero(hourly_epochs == 1)
-            hourly_df.at[rowcount,"rem_epochs_per_hour"] = np.count_nonzero(hourly_epochs == 2)
-            hourly_df.at[rowcount,"swd_epochs_per_hour"] = np.count_nonzero(hourly_epochs == 4)
+            hourly_df.at[rowcount,"wake_minutes_per_hour"] = (np.count_nonzero(hourly_epochs == 0)*5)/60
+            hourly_df.at[rowcount,"nrem_minutes_per_hour"] = (np.count_nonzero(hourly_epochs == 1)*5)/60
+            hourly_df.at[rowcount,"rem_minutes_per_hour"] = (np.count_nonzero(hourly_epochs == 2)*5)/60
+            hourly_df.at[rowcount,"swd_minutes_per_hour"] = (np.count_nonzero(hourly_epochs == 4)*5)/60
+            hourly_df.at[rowcount,'sleep_minutes_per_hour'] = float(hourly_df.at[rowcount,'nrem_minutes_per_hour'] + hourly_df.at[rowcount,'rem_minutes_per_hour']) # for total sleep just add nrem and rem together
     return hourly_df
 
 
@@ -363,19 +315,26 @@ def Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path):
 
     # CALCULATE TOTAL STATES
     df = calculate_total_states(data, df)
-    #Plots.plot_total_states(df, output_path)
-    #Plots.plot_total_states_sleep(df, output_path) # same plot as above but nrem and rem and added together to make 'sleep' catagory
+    Plots.plot_total_states(df, output_path)
+    Plots.plot_total_states_sleep(df, output_path) # same plot as above but nrem and rem and added together to make 'sleep' catagory
 
     # CALCULATE TOTAL STATES IN LIGHT AND DARK
     df = calculate_total_states_in_light_and_dark(data, df)
-    #Plots.plot_total_states_for_light_and_dark(total_epochs_light_dark, output_path)
-    #Plots.plot_total_states_sleep_light_and_dark(total_epochs_light_dark, output_path) # same plot as above but nrem and rem and added together to make 'sleep' catagory
+    Plots.plot_total_states_for_light_and_dark(df, output_path)
+    Plots.plot_total_states_sleep_light_and_dark(df, output_path) # same plot as above but nrem and rem and added together to make 'sleep' catagory
 
     # CALCULATE NUMBER AND LENGTH OF BOUTS
     df, bouts_df, seperate_scores_df = calculate_bout_durations(data, df)
-    #Plots.plot_bout_durations(df, seizure_number, output_path)
+    Plots.plot_average_bout_durations(df, output_path)
+    Plots.plot_total_bout_number(df, seizure_number, output_path)
+
+    # CALCULATE NUMBER AND LENGTH OF BOUTS IN LIGHT AND DARK
+    df = calculate_bout_durations_light_dark(bouts_df, df)
+    Plots.plot_average_bout_durations_lightanddark(df, output_path)
+    Plots.plot_total_bout_number_lightanddark(df, seizure_number, output_path)
+
+    # SAVE BOUT DURATIONS TO CSV
     #save_bout_durations_to_csv(df, output_path)
-    df = calculate_bout_durations_light_dark(seperate_scores_df, df)
 
     # SAVE TOTAL STATES TO CSV
     save_states_to_csv(df, output_path)
@@ -383,11 +342,10 @@ def Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path):
     # CALCULATE TOTAL TIME IN EACH STATE
     hourly_df = calculate_duration_per_hour(bouts_df)
     #Plots.plot_total_durations(df, output_path)
-    #save_bout_durations_per_hour_to_csv(df, output_path)
 
     # CALCULATE STATES PER HOUR
     hourly_df = calculate_states_per_hour(data, hourly_df)
-    #Plots.plot_states_per_hour(df, output_path)
+    Plots.plot_states_per_hour(hourly_df, output_path)
 
     # SAVE HOUR BY HOUR ANALYSIS
     save_per_hour_data_to_csv(hourly_df, output_path)
