@@ -234,7 +234,7 @@ def find_hourly_durations(durations, start_times):
     return hourly_duration
 
 
-def calculate_duration_per_hour(bouts_df):
+def calculate_duration_per_hour(bouts_df, animal_to_analyse):
     nrem_bouts = find_hourly_durations(np.array(bouts_df.loc[:, "nrem_bout_durations"]), np.array(bouts_df.loc[:, "nrem_bout_start_times"]))
     rem_bouts = find_hourly_durations(np.array(bouts_df.loc[:, "rem_bout_durations"]), np.array(bouts_df.loc[:, "rem_bout_start_times"]))
     wake_bouts = find_hourly_durations(np.array(bouts_df.loc[:, "wake_bout_durations"]), np.array(bouts_df.loc[:, "wake_bout_start_times"]))
@@ -242,6 +242,8 @@ def calculate_duration_per_hour(bouts_df):
     hourly_df = pd.DataFrame(columns=['hour', 'rem_bout_duration_per_hour', 'nrem_bout_duration_per_hour', 'wake_bout_duration_per_hour', 'sleep_bout_duration_per_hour',
                                       'wake_minutes_per_hour','nrem_minutes_per_hour','rem_minutes_per_hour','swd_minutes_per_hour','sleep_minutes_per_hour'])
     hourly_df["hour"] = pd.Series(np.arange(24))
+    hourly_df["hour_of_day"] = pd.Series(np.arange(24))
+    hourly_df["ID"] = pd.Series(np.repeat(animal_to_analyse, repeats=24))
 
     hourly_df["rem_bout_duration_per_hour"] = pd.Series(rem_bouts)
     hourly_df["nrem_bout_duration_per_hour"] = pd.Series(nrem_bouts)
@@ -299,16 +301,23 @@ def save_per_hour_data_to_csv(df, output_path):
 '''
 
 
-def Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path):
+def Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path, animal_to_analyse):
     # LOAD DATA
     data = process_dir(sleep_state_path) # overall data
 
     # Make dataframe for storing data
-    df = pd.DataFrame(columns = ['ID', 'period',
+    df = pd.DataFrame(columns = ['ID', 'animal_id','period',
                                  'total_minutes_wake', 'total_minutes_nrem', 'total_minutes_rem', 'total_minutes_swd', 'total_minutes_sleep',
                                  'avg_bout_duration_wake', 'avg_bout_duration_nrem', 'avg_bout_duration_rem', 'avg_bout_duration_swd',
                                  'sd_bout_duration_wake', 'sd_bout_duration_nrem', 'sd_bout_duration_rem', 'sd_bout_duration_swd',
                                  'bout_num_wake', 'bout_num_nrem', 'bout_num_rem', 'bout_num_swd'])
+
+    df.at[0,'ID'] = str(animal_to_analyse) # add a label for animal id
+    df.at[1,'ID'] = str(animal_to_analyse) # add a label for animal id
+    df.at[2,'ID'] = str(animal_to_analyse) # add a label for animal id
+    df.at[0,'animal_id'] = str(animal_to_analyse) # add a label for animal id
+    df.at[1,'animal_id'] = str(animal_to_analyse) # add a label for animal id
+    df.at[2,'animal_id'] = str(animal_to_analyse) # add a label for animal id
 
     # SEIZURE CORRECTION
     data, seizure_number = Seizure_Correction.correct_seizures(data, seizure_times_path)
@@ -340,7 +349,7 @@ def Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path):
     save_states_to_csv(df, output_path)
 
     # CALCULATE TOTAL TIME IN EACH STATE
-    hourly_df = calculate_duration_per_hour(bouts_df)
+    hourly_df = calculate_duration_per_hour(bouts_df, animal_to_analyse)
     #Plots.plot_total_durations(df, output_path)
 
     # CALCULATE STATES PER HOUR

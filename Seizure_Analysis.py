@@ -109,7 +109,7 @@ def save_seizure_data_to_csv(df, output_path):
     df.to_csv(output_path + 'seizures_2mins_around_nrem.csv', columns = ["seizures_around_sleep", "duration_of_seizures_around_sleep"], sep='\t', encoding='utf-8', index=False, header=True)
 
 
-def Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path):
+def Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path, animal_to_analyse):
     # LOAD DATA
     data = process_dir(seizure_times_path) # overall data
 

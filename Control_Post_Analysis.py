@@ -1,11 +1,3 @@
-"""
-Author: Sarah Tennant
-Date: 8/8/2024
-Script: Control_Post_Analysis.py
-
-Description: 
-
-"""
 # import packages
 import os
 
@@ -48,20 +40,18 @@ def main():
     print('-------------------------------------------------------------')
     print('-------------------------------------------------------------')
 
-    analyse_list = True
-
-    if analyse_list is True:
+    while True:
         print('I am checking whether there is something to analyse.')
         animal_to_analyse = get_next_recording()
         if animal_to_analyse is not False:
 
             #path to the recording .dat file
-            sleep_state_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/SYNGAPE8_' + str(animal_to_analyse) + '/SYNGAPE8_' + str(animal_to_analyse) + '_BL1-dge_swd.csv'
-            seizure_times_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/SYNGAPE8_' + str(animal_to_analyse) + '/24h/seiz/SYNGAPE8_' + str(animal_to_analyse) + '_BL1_Seizures.csv'
-            output_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/SYNGAPE8_' + str(animal_to_analyse) + '/'
+            sleep_state_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/SYNGAPE8_' + str(animal_to_analyse) + '/SYNGAPE8_' + str(animal_to_analyse) + '_BL1-dge_swd.csv'
+            seizure_times_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/SYNGAPE8_' + str(animal_to_analyse) + '/24h/seiz/SYNGAPE8_' + str(animal_to_analyse) + '_BL1_Seizures.csv'
+            output_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/SYNGAPE8_' + str(animal_to_analyse) + '/'
 
-            SleepScore_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path)
-            Seizure_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path)
+            SleepScore_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path, animal_to_analyse)
+            Seizure_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path, animal_to_analyse)
 
 
 if __name__ == '__main__':
