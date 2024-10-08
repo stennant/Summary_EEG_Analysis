@@ -997,42 +997,42 @@ def plot_average_bouts_light_and_dark(data, output_path):
 
 
 def plot_average_time_over_hours(df, output_path):
-    wake_het_syn21 = df[(df['Group'] == 'Het - UPV-AAV9/SYN21')]
+    wake_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
     wake_het_syn21_mean = np.array(wake_het_syn21.groupby('hour_of_day')['wake_minutes_per_hour'].mean())
     wake_het_syn21_sd = np.array(wake_het_syn21.groupby('hour_of_day')['wake_minutes_per_hour'].sem())
-    wake_het_syn20 = df[(df['Group'] == 'Het - UPV-AAV9/SYN20')]
+    wake_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
     wake_het_syn20_mean = np.array(wake_het_syn20.groupby('hour_of_day')['wake_minutes_per_hour'].mean())
     wake_het_syn20_sd = np.array(wake_het_syn20.groupby('hour_of_day')['wake_minutes_per_hour'].sem())
-    wake_het_pbs = df[(df['Group'] == 'Het - PBS')]
+    wake_het_pbs = df[(df['Group'] == 'HET - PBS')]
     wake_het_pbs_mean = np.array(wake_het_pbs.groupby('hour_of_day')['wake_minutes_per_hour'].mean())
     wake_het_pbs_sd = np.array(wake_het_pbs.groupby('hour_of_day')['wake_minutes_per_hour'].sem())
-    wake_wt_pbs = df[(df['Group'] == 'Wt - PBS')]
+    wake_wt_pbs = df[(df['Group'] == 'WT - PBS')]
     wake_wt_pbs_mean = np.array(wake_wt_pbs.groupby('hour_of_day')['wake_minutes_per_hour'].mean())
     wake_wt_pbs_sd = np.array(wake_wt_pbs.groupby('hour_of_day')['wake_minutes_per_hour'].sem())
 
-    nrem_het_syn21 = df[(df['Group'] == 'Het - UPV-AAV9/SYN21')]
+    nrem_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
     nrem_het_syn21_mean = np.array(nrem_het_syn21.groupby('hour_of_day')['nrem_minutes_per_hour'].mean())
     nrem_het_syn21_sd = np.array(nrem_het_syn21.groupby('hour_of_day')['nrem_minutes_per_hour'].sem())
-    nrem_het_syn20 = df[(df['Group'] == 'Het - UPV-AAV9/SYN20')]
+    nrem_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
     nrem_het_syn20_mean = np.array(nrem_het_syn20.groupby('hour_of_day')['nrem_minutes_per_hour'].mean())
     nrem_het_syn20_sd = np.array(nrem_het_syn20.groupby('hour_of_day')['nrem_minutes_per_hour'].sem())
-    nrem_het_pbs = df[(df['Group'] == 'Het - PBS')]
+    nrem_het_pbs = df[(df['Group'] == 'HET - PBS')]
     nrem_het_pbs_mean = np.array(nrem_het_pbs.groupby('hour_of_day')['nrem_minutes_per_hour'].mean())
     nrem_het_pbs_sd = np.array(nrem_het_pbs.groupby('hour_of_day')['nrem_minutes_per_hour'].sem())
-    nrem_wt_pbs = df[(df['Group'] == 'Wt - PBS')]
+    nrem_wt_pbs = df[(df['Group'] == 'WT - PBS')]
     nrem_wt_pbs_mean = np.array(nrem_wt_pbs.groupby('hour_of_day')['nrem_minutes_per_hour'].mean())
     nrem_wt_pbs_sd = np.array(nrem_wt_pbs.groupby('hour_of_day')['nrem_minutes_per_hour'].sem())
 
-    rem_het_syn21 = df[(df['Group'] == 'Het - UPV-AAV9/SYN21')]
+    rem_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
     rem_het_syn21_mean = np.array(rem_het_syn21.groupby('hour_of_day')['rem_minutes_per_hour'].mean())
     rem_het_syn21_sd = np.array(rem_het_syn21.groupby('hour_of_day')['rem_minutes_per_hour'].sem())
-    rem_het_syn20 = df[(df['Group'] == 'Het - UPV-AAV9/SYN20')]
+    rem_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
     rem_het_syn20_mean = np.array(rem_het_syn20.groupby('hour_of_day')['rem_minutes_per_hour'].mean())
     rem_het_syn20_sd = np.array(rem_het_syn20.groupby('hour_of_day')['rem_minutes_per_hour'].sem())
-    rem_het_pbs = df[(df['Group'] == 'Het - PBS')]
+    rem_het_pbs = df[(df['Group'] == 'HET - PBS')]
     rem_het_pbs_mean = np.array(rem_het_pbs.groupby('hour_of_day')['rem_minutes_per_hour'].mean())
     rem_het_pbs_sd = np.array(rem_het_pbs.groupby('hour_of_day')['rem_minutes_per_hour'].sem())
-    rem_wt_pbs = df[(df['Group'] == 'Wt - PBS')]
+    rem_wt_pbs = df[(df['Group'] == 'WT - PBS')]
     rem_wt_pbs_mean = np.array(rem_wt_pbs.groupby('hour_of_day')['rem_minutes_per_hour'].mean())
     rem_wt_pbs_sd = np.array(rem_wt_pbs.groupby('hour_of_day')['rem_minutes_per_hour'].sem())
 
@@ -1119,42 +1119,42 @@ def plot_average_time_over_hours(df, output_path):
 
 
 def plot_average_bouts_over_hours(df, output_path):
-    wake_het_syn21 = df[(df['Group'] == 'Het - UPV-AAV9/SYN21')]
+    wake_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
     wake_het_syn21_mean = np.array(wake_het_syn21.groupby('hour_of_day')['wake_bout_duration_per_hour'].mean())
     wake_het_syn21_sd = np.array(wake_het_syn21.groupby('hour_of_day')['wake_bout_duration_per_hour'].sem())
-    wake_het_syn20 = df[(df['Group'] == 'Het - UPV-AAV9/SYN20')]
+    wake_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
     wake_het_syn20_mean = np.array(wake_het_syn20.groupby('hour_of_day')['wake_bout_duration_per_hour'].mean())
     wake_het_syn20_sd = np.array(wake_het_syn20.groupby('hour_of_day')['wake_bout_duration_per_hour'].sem())
-    wake_het_pbs = df[(df['Group'] == 'Het - PBS')]
+    wake_het_pbs = df[(df['Group'] == 'HET - PBS')]
     wake_het_pbs_mean = np.array(wake_het_pbs.groupby('hour_of_day')['wake_bout_duration_per_hour'].mean())
     wake_het_pbs_sd = np.array(wake_het_pbs.groupby('hour_of_day')['wake_bout_duration_per_hour'].sem())
-    wake_wt_pbs = df[(df['Group'] == 'Wt - PBS')]
+    wake_wt_pbs = df[(df['Group'] == 'WT - PBS')]
     wake_wt_pbs_mean = np.array(wake_wt_pbs.groupby('hour_of_day')['wake_bout_duration_per_hour'].mean())
     wake_wt_pbs_sd = np.array(wake_wt_pbs.groupby('hour_of_day')['wake_bout_duration_per_hour'].sem())
 
-    nrem_het_syn21 = df[(df['Group'] == 'Het - UPV-AAV9/SYN21')]
+    nrem_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
     nrem_het_syn21_mean = np.array(nrem_het_syn21.groupby('hour_of_day')['nrem_bout_duration_per_hour'].mean())
     nrem_het_syn21_sd = np.array(nrem_het_syn21.groupby('hour_of_day')['nrem_bout_duration_per_hour'].sem())
-    nrem_het_syn20 = df[(df['Group'] == 'Het - UPV-AAV9/SYN20')]
+    nrem_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
     nrem_het_syn20_mean = np.array(nrem_het_syn20.groupby('hour_of_day')['nrem_bout_duration_per_hour'].mean())
     nrem_het_syn20_sd = np.array(nrem_het_syn20.groupby('hour_of_day')['nrem_bout_duration_per_hour'].sem())
-    nrem_het_pbs = df[(df['Group'] == 'Het - PBS')]
+    nrem_het_pbs = df[(df['Group'] == 'HET - PBS')]
     nrem_het_pbs_mean = np.array(nrem_het_pbs.groupby('hour_of_day')['nrem_bout_duration_per_hour'].mean())
     nrem_het_pbs_sd = np.array(nrem_het_pbs.groupby('hour_of_day')['nrem_bout_duration_per_hour'].sem())
-    nrem_wt_pbs = df[(df['Group'] == 'Wt - PBS')]
+    nrem_wt_pbs = df[(df['Group'] == 'WT - PBS')]
     nrem_wt_pbs_mean = np.array(nrem_wt_pbs.groupby('hour_of_day')['nrem_bout_duration_per_hour'].mean())
     nrem_wt_pbs_sd = np.array(nrem_wt_pbs.groupby('hour_of_day')['nrem_bout_duration_per_hour'].sem())
 
-    rem_het_syn21 = df[(df['Group'] == 'Het - UPV-AAV9/SYN21')]
+    rem_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
     rem_het_syn21_mean = np.array(rem_het_syn21.groupby('hour_of_day')['rem_bout_duration_per_hour'].mean())
     rem_het_syn21_sd = np.array(rem_het_syn21.groupby('hour_of_day')['rem_bout_duration_per_hour'].sem())
-    rem_het_syn20 = df[(df['Group'] == 'Het - UPV-AAV9/SYN20')]
+    rem_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
     rem_het_syn20_mean = np.array(rem_het_syn20.groupby('hour_of_day')['rem_bout_duration_per_hour'].mean())
     rem_het_syn20_sd = np.array(rem_het_syn20.groupby('hour_of_day')['rem_bout_duration_per_hour'].sem())
-    rem_het_pbs = df[(df['Group'] == 'Het - PBS')]
+    rem_het_pbs = df[(df['Group'] == 'HET - PBS')]
     rem_het_pbs_mean = np.array(rem_het_pbs.groupby('hour_of_day')['rem_bout_duration_per_hour'].mean())
     rem_het_pbs_sd = np.array(rem_het_pbs.groupby('hour_of_day')['rem_bout_duration_per_hour'].sem())
-    rem_wt_pbs = df[(df['Group'] == 'Wt - PBS')]
+    rem_wt_pbs = df[(df['Group'] == 'WT - PBS')]
     rem_wt_pbs_mean = np.array(rem_wt_pbs.groupby('hour_of_day')['rem_bout_duration_per_hour'].mean())
     rem_wt_pbs_sd = np.array(rem_wt_pbs.groupby('hour_of_day')['rem_bout_duration_per_hour'].sem())
 
@@ -1245,9 +1245,9 @@ def main():
     print('-------------------------------------------------------------')
 
     #path to the recording .dat file
-    overall_data_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/analysis_all_animals_12W_Blinded2.csv'
-    hourly_data_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/analysis_hour_by_hour_all_animals_Blinded2.csv'
-    output_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/12W/'
+    overall_data_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/analysis_all_animals_17W.csv'
+    hourly_data_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/analysis_hour_by_hour_all_animals_17W.csv'
+    output_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/'
 
     # LOAD DATA
     overall_data = process_dir(overall_data_path) # overall data
