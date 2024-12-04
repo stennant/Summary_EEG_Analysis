@@ -20,7 +20,7 @@ def get_next_recording():
     if not os.listdir(downtime_lists_path):
         return False
     else:
-        list_to_read = os.listdir(downtime_lists_path)[0]
+        list_to_read = os.listdir(downtime_lists_path)[1]
         list_to_read_path = downtime_lists_path + list_to_read
         if os.stat(list_to_read_path).st_size == 0:
             os.remove(list_to_read_path)
@@ -46,12 +46,15 @@ def main():
         if animal_to_analyse is not False:
 
             #path to the recording .dat file
-            sleep_state_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/SYNGAPE8_' + str(animal_to_analyse) + '/SYNGAPE8_' + str(animal_to_analyse) + '_BL1-dge_swd.csv'
-            seizure_times_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/SYNGAPE8_' + str(animal_to_analyse) + '/24h/seiz/SYNGAPE8_' + str(animal_to_analyse) + '_BL1_Seizures.csv'
-            output_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/SYNGAPE8_' + str(animal_to_analyse) + '/'
+            #sleep_state_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/SYNGAPE8_' + str(animal_to_analyse) + '/SYNGAPE8_' + str(animal_to_analyse) + '_BL1-dge_swd.csv'
+            #seizure_times_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/SYNGAPE8_' + str(animal_to_analyse) + '/24h/seiz/SYNGAPE8_' + str(animal_to_analyse) + '_BL1_Seizures.csv'
+            #output_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/SYNGAPE8_' + str(animal_to_analyse) + '/'
+            sleep_state_path = '/Volumes/Sarah/GNU/OUTPUT/GNU/GNU_' + str(animal_to_analyse) + '/GNU_' + str(animal_to_analyse) + '_BL1-dge_ok.csv'
+            seizure_times_path = '/Volumes/Sarah/GNU/OUTPUT/GNU/GNU_' + str(animal_to_analyse) + '/seiz/GNU_' + str(animal_to_analyse) + '_BL1_Seizures.csv'
+            output_path = '/Volumes/Sarah/GNU/OUTPUT/GNU/GNU_' + str(animal_to_analyse) + '/'
 
             SleepScore_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path, animal_to_analyse)
-            Seizure_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path, animal_to_analyse)
+            #Seizure_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path, animal_to_analyse)
 
 
 if __name__ == '__main__':
