@@ -25,7 +25,7 @@ def plot_total_states(df, output_path):
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/TotalTime_perstate' + '.png', dpi=200)
 
 def plot_total_states_sleep(df, output_path):
@@ -49,7 +49,7 @@ def plot_total_states_sleep(df, output_path):
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/TotalTime_perstate_sleep' + '.png', dpi=200)
 
 
@@ -77,6 +77,7 @@ def plot_total_states_for_light_and_dark(df, output_path):
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
     plt.locator_params(axis='x', nbins=7)
     ax.set_xticklabels(['', 'wake', 'nrem', 'rem', 'wake', 'nrem', 'rem'])
+    plt.xticks(rotation=70)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
@@ -87,7 +88,7 @@ def plot_total_states_for_light_and_dark(df, output_path):
          verticalalignment='center', transform=ax.transAxes)
     plt.text(0.75, 0.95, 'Dark', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes, color = 'White')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/TotalTime_perstate_lightanddark' + '.png', dpi=200)
 
 
@@ -121,7 +122,7 @@ def plot_total_states_sleep_light_and_dark(df, output_path):
          verticalalignment='center', transform=ax.transAxes)
     plt.text(0.75, 0.95, 'Dark', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes, color = 'White')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/TotalTime_perstate_sleep_lightanddark' + '.png', dpi=200)
 
 
@@ -146,7 +147,7 @@ def plot_states_per_hour(df,output_path):
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.12, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/TotalTime_States_perhour' + '.png', dpi=200)
     plt.close()
 
@@ -184,7 +185,7 @@ def plot_average_bout_durations(df, output_path):
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/AverageDuration_bouts' + '.png', dpi=200)
 
 
@@ -223,6 +224,7 @@ def plot_average_bout_durations_lightanddark(df, output_path):
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
     plt.locator_params(axis='x', nbins=8)
     ax.set_xticklabels(['', 'Wake', 'nrem', 'rem', 'Wake', 'nrem', 'rem'])
+    plt.xticks(rotation=70)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
@@ -232,7 +234,7 @@ def plot_average_bout_durations_lightanddark(df, output_path):
     plt.text(0.75, 0.95, 'Dark', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes, color = 'White')
     ax.xaxis.set_ticks_position('bottom')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/AverageDuration_bouts_lightanddark' + '.png', dpi=200)
 
 
@@ -257,7 +259,7 @@ def plot_total_bout_number(df, seizure_number, output_path):
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/TotalNumber_bouts' + '.png', dpi=200)
 
 
@@ -281,16 +283,17 @@ def plot_total_bout_number_lightanddark(df, seizure_number, output_path):
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
     plt.locator_params(axis='x', nbins=8)
     ax.set_xticklabels(['', 'Wake', 'nrem', 'rem', 'Wake', 'nrem', 'rem'])
+    plt.xticks(rotation=70)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    plt.axhline(y=230, xmin =0.518, xmax=1, color='k', linewidth=10, alpha=0.85, zorder=0)
+    plt.axhline(y=430, xmin =0.518, xmax=1, color='k', linewidth=10, alpha=0.85, zorder=0)
     plt.text(0.25, 0.95, 'Light', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes)
     plt.text(0.75, 0.95, 'Dark', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes, color = 'White')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/TotalNumber_bouts_lightanddark' + '.png', dpi=200)
 
 
@@ -316,7 +319,7 @@ def plot_total_durations(df, output_path):
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.12, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/bout_duration_per_hour' + '.png', dpi=200)
     return df
 
@@ -332,7 +335,7 @@ def plot_seizure_durations(durations, output_path):
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/seizure_durations' + '.png', dpi=200)
 
 
@@ -348,5 +351,5 @@ def plot_seizure_start_times(durations, output_path):
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
+    plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.25, right=0.87, top=0.92)
     plt.savefig(output_path + '/seizure_start_times' + '.png', dpi=200)
