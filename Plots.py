@@ -10,17 +10,17 @@ def plot_total_states(df, output_path):
     rem = df.loc[0,"total_minutes_rem"]
     swd = df.loc[0,"total_minutes_swd"]
 
-    total_mins_for_each_state = [wake, nrem, rem, swd]
-    color = ['LightSkyBlue', 'DodgerBlue', 'Blue', 'MidnightBlue']
-    bins = np.arange(4)
+    total_mins_for_each_state = [wake, nrem, rem]
+    color = ['LightSkyBlue', 'DodgerBlue', 'Blue']
+    bins = np.arange(3)
 
-    percent_histogram = plt.figure(figsize=(6, 4))
+    percent_histogram = plt.figure(figsize=(3, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
     ax.bar(bins, total_mins_for_each_state, color= color)
     plt.ylabel('Total time (minutes)', fontsize=12, labelpad=10)
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
-    plt.locator_params(axis='x', nbins=5)
-    ax.set_xticklabels(['', 'wake', 'nrem', 'rem', 'swd'])
+    plt.locator_params(axis='x', nbins=4)
+    ax.set_xticklabels(['', 'wake', 'nrem', 'rem'])
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
@@ -33,18 +33,18 @@ def plot_total_states_sleep(df, output_path):
     wake = df.loc[0,"total_minutes_wake"]
     sleep = df.loc[0,"total_minutes_sleep"]
     swd = df.loc[0,"total_minutes_swd"]
-    total_mins_for_each_state = [wake, sleep, swd]
+    total_mins_for_each_state = [wake, sleep]
 
-    color = ['LightSkyBlue', 'DodgerBlue', 'MidnightBlue']
-    bins = np.arange(3)
+    color = ['LightSkyBlue', 'DodgerBlue']
+    bins = np.arange(2)
 
-    percent_histogram = plt.figure(figsize=(6, 4))
+    percent_histogram = plt.figure(figsize=(3, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
     ax.bar(bins, total_mins_for_each_state, color= color)
     plt.ylabel('Total time (minutes)', fontsize=12, labelpad=10)
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
-    plt.locator_params(axis='x', nbins=4)
-    ax.set_xticklabels(['', 'wake', 'sleep', 'swd'])
+    plt.locator_params(axis='x', nbins=3)
+    ax.set_xticklabels(['', 'wake', 'sleep'])
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
@@ -65,18 +65,18 @@ def plot_total_states_for_light_and_dark(df, output_path):
     rem_dark = df.loc[2,"total_minutes_rem"]
     swd_dark = df.loc[2,"total_minutes_swd"]
 
-    total_time = [wake_light, nrem_light, rem_light, swd_light, wake_dark, nrem_dark, rem_dark, swd_dark]
+    total_time = [wake_light, nrem_light, rem_light, wake_dark, nrem_dark, rem_dark]
 
-    bins = np.arange(8)
-    color = ['LightSkyBlue', 'DodgerBlue', 'Blue', 'MidnightBlue']
+    bins = np.arange(6)
+    color = ['LightSkyBlue', 'DodgerBlue', 'Blue']
 
-    percent_histogram = plt.figure(figsize=(6, 4))
+    percent_histogram = plt.figure(figsize=(3, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
     ax.bar(bins, total_time, color= color)
     plt.ylabel('Total time (minutes)', fontsize=12, labelpad=10)
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
-    plt.locator_params(axis='x', nbins=9)
-    ax.set_xticklabels(['', 'wake', 'nrem', 'rem', 'swd', 'wake', 'nrem', 'rem', 'swd'])
+    plt.locator_params(axis='x', nbins=7)
+    ax.set_xticklabels(['', 'wake', 'nrem', 'rem', 'wake', 'nrem', 'rem'])
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
@@ -100,18 +100,18 @@ def plot_total_states_sleep_light_and_dark(df, output_path):
     sleep_dark = df.loc[2,"total_minutes_sleep"]
     swd_dark = df.loc[2,"total_minutes_swd"]
 
-    total_time = [wake_light, sleep_light, swd_light, wake_dark, sleep_dark, swd_dark]
+    total_time = [wake_light, sleep_light, wake_dark, sleep_dark]
 
-    bins = np.arange(6)
-    color = ['LightSkyBlue', 'DodgerBlue', 'MidnightBlue']
+    bins = np.arange(4)
+    color = ['LightSkyBlue', 'DodgerBlue']
 
-    percent_histogram = plt.figure(figsize=(6, 4))
+    percent_histogram = plt.figure(figsize=(3, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
     ax.bar(bins, total_time, color= color)
     plt.ylabel('Total time (minutes)', fontsize=12, labelpad=10)
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
-    plt.locator_params(axis='x', nbins=7)
-    ax.set_xticklabels(['', 'wake', 'sleep', 'swd', 'wake', 'sleep', 'swd'])
+    plt.locator_params(axis='x', nbins=5)
+    ax.set_xticklabels(['', 'wake', 'sleep', 'wake', 'sleep'])
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
@@ -136,10 +136,9 @@ def plot_states_per_hour(df,output_path):
 
     epochs_histogram = plt.figure(figsize=(6, 4))
     ax = epochs_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
-    ax.bar(bins, swd, color = "MidnightBlue")
-    ax.bar(bins, rem, bottom = swd, color = "Blue")
-    ax.bar(bins, nrem, bottom = swd + rem, color = "DodgerBlue")
-    ax.bar(bins, wake, bottom = swd + rem + nrem, color = "LightSkyBlue")
+    ax.bar(bins, rem, color = "Blue")
+    ax.bar(bins, nrem, bottom = rem, color = "DodgerBlue")
+    ax.bar(bins, wake, bottom = rem + nrem, color = "LightSkyBlue")
     plt.ylabel('Total time (minutes)', fontsize=12, labelpad=10)
     plt.xlabel('Hour', fontsize=12, labelpad=10)
     plt.legend(["swd", "rem", "nrem", "wake"])
@@ -170,7 +169,7 @@ def plot_average_bout_durations(df, output_path):
 
     color = ['LightSkyBlue', 'DodgerBlue', 'Blue']
 
-    percent_histogram = plt.figure(figsize=(6, 4))
+    percent_histogram = plt.figure(figsize=(3, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
     ax.bar(bins, average_durations, color = color)
     #ax.plot(np.random.uniform(low=0.6, high=1.4, size=(len(np.array(df.loc[:, "wake_bout_durations"])))), np.array(df.loc[:, "wake_bout_durations"]), color = "LightSkyBlue")
@@ -213,7 +212,7 @@ def plot_average_bout_durations_lightanddark(df, output_path):
 
     color = ['LightSkyBlue', 'DodgerBlue', 'Blue', 'LightSkyBlue', 'DodgerBlue', 'Blue']
 
-    percent_histogram = plt.figure(figsize=(6, 4))
+    percent_histogram = plt.figure(figsize=(3, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
     ax.bar(bins, average_durations, color = color)
     #ax.plot(np.random.uniform(low=0.6, high=1.4, size=(len(np.array(df.loc[:, "wake_bout_durations"])))), np.array(df.loc[:, "wake_bout_durations"]), color = "LightSkyBlue")
@@ -243,17 +242,17 @@ def plot_total_bout_number(df, seizure_number, output_path):
     nrem = df.loc[0, "bout_num_nrem"]
     rem = df.loc[0, "bout_num_rem"]
 
-    average_durations = [wake, nrem, rem, seizure_number]
-    bins = np.arange(4)
-    color = ['LightSkyBlue', 'DodgerBlue', 'Blue', 'MidnightBlue']
+    average_durations = [wake, nrem, rem]
+    bins = np.arange(3)
+    color = ['LightSkyBlue', 'DodgerBlue', 'Blue']
 
-    percent_histogram = plt.figure(figsize=(6, 4))
+    percent_histogram = plt.figure(figsize=(3, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
     ax.bar(bins, average_durations, color= color)
     plt.ylabel('Total number of bouts', fontsize=12, labelpad=10)
     plt.xlabel('Sleep state', fontsize=12, labelpad=10)
-    plt.locator_params(axis='x', nbins=5)
-    ax.set_xticklabels(['', 'Wake', 'nrem', 'rem', 'swd'])
+    plt.locator_params(axis='x', nbins=4)
+    ax.set_xticklabels(['', 'Wake', 'nrem', 'rem'])
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
@@ -275,7 +274,7 @@ def plot_total_bout_number_lightanddark(df, seizure_number, output_path):
     bins = np.arange(6)
     color = ['LightSkyBlue', 'DodgerBlue', 'Blue']
 
-    percent_histogram = plt.figure(figsize=(6, 4))
+    percent_histogram = plt.figure(figsize=(3, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
     ax.bar(bins, average_durations, color= color)
     plt.ylabel('Total number of bouts', fontsize=12, labelpad=10)
@@ -305,7 +304,7 @@ def plot_total_durations(df, output_path):
 
     bins = np.arange(24)
 
-    epochs_histogram = plt.figure(figsize=(6, 4))
+    epochs_histogram = plt.figure(figsize=(3, 4))
     ax = epochs_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
     ax.bar(bins, rem, color = "Blue")
     ax.bar(bins, nrem, bottom = rem, color = "DodgerBlue")
@@ -324,7 +323,7 @@ def plot_total_durations(df, output_path):
 
 def plot_seizure_durations(durations, output_path):
 
-    percent_histogram = plt.figure(figsize=(6, 4))
+    percent_histogram = plt.figure(figsize=(3, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
     ax.bar(np.arange(60), durations, color= "black")
     plt.ylabel('Number of seizures', fontsize=12, labelpad=10)
@@ -340,7 +339,7 @@ def plot_seizure_durations(durations, output_path):
 
 def plot_seizure_start_times(durations, output_path):
 
-    percent_histogram = plt.figure(figsize=(6, 4))
+    percent_histogram = plt.figure(figsize=(3, 4))
     ax = percent_histogram.add_subplot(1, 1, 1)  # specify (nrows, ncols, axnum)
     ax.bar(np.arange(24), durations, color= "black")
     plt.ylabel('Number of seizures', fontsize=12, labelpad=10)
