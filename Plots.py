@@ -1,5 +1,5 @@
 # import packages
-from pylab import *
+import matplotlib.pyplot as plt
 import numpy as np
 import math
 
@@ -83,9 +83,9 @@ def plot_total_states_for_light_and_dark(df, output_path):
     ax.xaxis.set_ticks_position('bottom')
     #plt.axhline(y=600, xmin =0, xmax=0.482, color='grey', linewidth=10, alpha=0.85, zorder=0)
     plt.axhline(y=600, xmin =0.518, xmax=1, color='k', linewidth=10, alpha=0.85, zorder=0)
-    text(0.25, 0.95, 'Light', horizontalalignment='center',
+    plt.text(0.25, 0.95, 'Light', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes)
-    text(0.75, 0.95, 'Dark', horizontalalignment='center',
+    plt.text(0.75, 0.95, 'Dark', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes, color = 'White')
     plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
     plt.savefig(output_path + '/TotalTime_perstate_lightanddark' + '.png', dpi=200)
@@ -117,9 +117,9 @@ def plot_total_states_sleep_light_and_dark(df, output_path):
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
     plt.axhline(y=600, xmin =0.518, xmax=1, color='k', linewidth=10, alpha=0.85, zorder=0)
-    text(0.25, 0.95, 'Light', horizontalalignment='center',
+    plt.text(0.25, 0.95, 'Light', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes)
-    text(0.75, 0.95, 'Dark', horizontalalignment='center',
+    plt.text(0.75, 0.95, 'Dark', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes, color = 'White')
     plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
     plt.savefig(output_path + '/TotalTime_perstate_sleep_lightanddark' + '.png', dpi=200)
@@ -227,9 +227,9 @@ def plot_average_bout_durations_lightanddark(df, output_path):
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     plt.axhline(y=290, xmin =0.518, xmax=1, color='k', linewidth=10, alpha=0.85, zorder=0)
-    text(0.25, 0.95, 'Light', horizontalalignment='center',
+    plt.text(0.25, 0.95, 'Light', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes)
-    text(0.75, 0.95, 'Dark', horizontalalignment='center',
+    plt.text(0.75, 0.95, 'Dark', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes, color = 'White')
     ax.xaxis.set_ticks_position('bottom')
     plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
@@ -286,9 +286,9 @@ def plot_total_bout_number_lightanddark(df, seizure_number, output_path):
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
     plt.axhline(y=230, xmin =0.518, xmax=1, color='k', linewidth=10, alpha=0.85, zorder=0)
-    text(0.25, 0.95, 'Light', horizontalalignment='center',
+    plt.text(0.25, 0.95, 'Light', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes)
-    text(0.75, 0.95, 'Dark', horizontalalignment='center',
+    plt.text(0.75, 0.95, 'Dark', horizontalalignment='center',
          verticalalignment='center', transform=ax.transAxes, color = 'White')
     plt.subplots_adjust(hspace=.35, wspace=.35, bottom=0.2, left=0.22, right=0.87, top=0.92)
     plt.savefig(output_path + '/TotalNumber_bouts_lightanddark' + '.png', dpi=200)
