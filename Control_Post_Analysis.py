@@ -53,8 +53,8 @@ def main():
             #seizure_times_path = '/Volumes/Sarah/GNU/OUTPUT/GNU/GNU_' + str(animal_to_analyse) + '/seiz/GNU_' + str(animal_to_analyse) + '_BL1_Seizures.csv'
             #output_path = '/Volumes/Sarah/GNU/OUTPUT/GNU/GNU_' + str(animal_to_analyse) + '/'
 
-            SleepScore_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path, animal_to_analyse)
-            #Seizure_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path, animal_to_analyse)
+            #SleepScore_Analysis.Analyse_SleepsScore(sleep_state_path, seizure_times_path, output_path, animal_to_analyse)
+            Seizure_Analysis.Analyse_SleepScore(sleep_state_path, seizure_times_path, output_path, animal_to_analyse)
 
 
 if __name__ == '__main__':

@@ -63,7 +63,9 @@ def load_sleep_data(file_path):
     return data
 
 def find_seizures_around_sleep(sleep_state_data, seizure_start_times):
-    sleep_state_values = np.array(list(flatten(np.array(sleep_state_data))))
+    #sleep_state_values = np.array(list(flatten(np.array(sleep_state_data))))
+    sleep_state_values1 = np.array(sleep_state_data)
+    sleep_state_values = np.array(list(sleep_state_values1.flatten()))
     sleep_state_values_flanked = np.hstack((np.zeros((24)), sleep_state_values, np.zeros((24))))
 
     seizures_around_sleep = []
