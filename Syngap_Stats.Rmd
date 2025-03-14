@@ -1,0 +1,148 @@
+---
+title: "Syngap_stats"
+author: "Sarah Tennant"
+date: "17/02/2025"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+setwd("/Volumes/Sarah/SYNGAPE8/") 
+
+data = read.csv("syngapanalysis.csv", header = TRUE)
+```
+
+#
+```{r}
+
+data_summary <- data  %>%
+  select(Total, ID, Treatment, Genotype, Groups) %>%
+  dplyr::group_by(Groups, .drop=FALSE) %>%
+  dplyr::summarise(n = n(), mean = mean(Total), sdt = sd(Total), sem = sd(Total)/sqrt(n()))
+ 
+
+```
+
+
+```{r}
+level_order <- c("WT PBS", "HET PBS", "HET SYN21", "HET SYN20")
+
+ggplot(data=data, aes(x = as.factor(unlist(Groups)), y = as.numeric(Total))) +
+  geom_violin(aes(x = factor(Groups, level=level_order), y = as.numeric(Total), fill=factor(Groups, level=level_order)), alpha=0.7) +
+  scale_fill_manual(values=c(  "grey", "aquamarine3","cornflowerblue", "brown3")) +
+  #scale_y_continuous(breaks = scales::pretty_breaks(n = 3)) +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2) +
+  geom_jitter(alpha=0.05) +
+  geom_jitter(position = position_jitter(seed = 1, width = 0.2)) +
+  labs(y="Mean number of seizures", x="") +
+  theme_classic() +
+  theme(axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=12),
+        legend.position="bottom", 
+        legend.title = element_blank(),
+        text = element_text(size=12), 
+        legend.text=element_text(size=12), 
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0))) 
+
+ggsave(file = "MeanSeizures_groups.png",width = 4, height = 2.5)
+
+
+```
+
+#
+```{r}
+data_het <- subset(data, Genotype == "HET")
+data_wt <- subset(data, Genotype == "WT")
+data_het_pbs <- subset(data_het, Treatment == "PBS")
+data_het_syn20 <- subset(data_het, Treatment == "SYN20")
+data_het_syn21 <- subset(data_het, Treatment == "SYN21")
+
+total_seizures_het <- as.numeric(data_het_pbs$Total)
+total_seizures_wt <- as.numeric(data_wt$Total)
+total_seizures_syn20 <- as.numeric(data_het_syn20$Total)
+total_seizures_syn21 <- as.numeric(data_het_syn21$Total)
+
+# paired t-test for positive ramps
+t.test(total_seizures_het,total_seizures_wt) # where y1 & y2 are numeric
+t.test(total_seizures_het,total_seizures_syn21) # where y1 & y2 are numeric
+t.test(total_seizures_het,total_seizures_syn20) # where y1 & y2 are numeric
+
+
+```
+
+
+
+
+```{r}
+setwd("/Volumes/Sarah/SYNGAPE8/") 
+
+data = read.csv("SyngapAnalysis_REM_TotalTime.csv", header = TRUE)
+```
+
+
+
+
+```{r}
+data_summary <- data  %>%
+```
+
+
+```{r}
+select(total_minutes_rem, ID, Group) %>%
+  dplyr::group_by(Group, .drop=FALSE) %>%
+  dplyr::summarise(n = n(), mean = mean(total_minutes_rem), sdt = sd(total_minutes_rem), sem = sd(total_minutes_rem)/sqrt(n()))
+ 
+
+```
+
+
+```{r}
+level_order <- c("WT - PBS", "HET - PBS", "HET - SYN21", "HET - SYN20")
+
+ggplot(data=data, aes(x = as.factor(unlist(Group)), y = as.numeric(total_minutes_rem))) +
+  geom_violin(aes(x = factor(Group, level=level_order), y = as.numeric(total_minutes_rem), fill=factor(Group, level=level_order)), alpha=0.7) +
+  scale_fill_manual(values=c(  "grey", "aquamarine3","cornflowerblue", "brown3")) +
+  #scale_y_continuous(breaks = scales::pretty_breaks(n = 3)) +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2) +
+  geom_jitter(alpha=0.05) +
+  geom_jitter(position = position_jitter(seed = 1, width = 0.2)) +
+  labs(y="Mean number of seizures", x="") +
+  theme_classic() +
+  theme(axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=12),
+        legend.position="bottom", 
+        legend.title = element_blank(),
+        text = element_text(size=12), 
+        legend.text=element_text(size=12), 
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0))) 
+
+ggsave(file = "MeanREMTime_groups.png",width = 4, height = 2.5)
+
+
+```
+
+
+
+```{r}
+data_het_pbs <- subset(data, Group == "HET - PBS")
+data_wt <- subset(data, Group == "WT - PBS")
+data_het_syn20 <- subset(data, Group == "HET - SYN20")
+data_het_syn21 <- subset(data, Group == "HET - SYN21")
+
+total_rem_het <- as.numeric(data_het_pbs$total_minutes_rem)
+total_rem_wt <- as.numeric(data_wt$total_minutes_rem)
+total_rem_syn20 <- as.numeric(data_het_syn20$total_minutes_rem)
+total_rem_syn21 <- as.numeric(data_het_syn21$total_minutes_rem)
+
+# paired t-test for positive ramps
+t.test(total_rem_het,total_rem_wt) # where y1 & y2 are numeric
+t.test(total_rem_het,total_rem_syn21) # where y1 & y2 are numeric
+t.test(total_rem_het,total_rem_syn20) # where y1 & y2 are numeric
+
+
+```
+
