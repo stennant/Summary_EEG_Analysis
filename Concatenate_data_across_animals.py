@@ -6,9 +6,9 @@ import pandas as pd
 
 
 def concat_multi_dir():
-    analysis_path = '/Volumes/Sarah/GNU/OUTPUT/GNU/'
+    analysis_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/'
 
-    local_output_path = '/Volumes/Sarah/GNU/analysis_all_animals.csv'
+    local_output_path = '/Volumes/Sarah/SYNGAPE8/analysis_all_animals_avg.csv'
 
     if os.path.exists(analysis_path):
         print('I found the analysis folder.')
@@ -29,9 +29,9 @@ def concat_multi_dir():
 
 
 def concat_hourly_dir():
-    analysis_path = '/Volumes/Sarah/GNU/OUTPUT/GNU/'
+    analysis_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/'
 
-    local_output_path = '/Volumes/Sarah/GNU/analysis_hour_by_hour_all_animals.csv'
+    local_output_path = '/Volumes/Sarah/SYNGAPE8/analysis_hour_by_hour_all_animals_avg.csv'
 
     if os.path.exists(analysis_path):
         print('I found the analysis folder.')

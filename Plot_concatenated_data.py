@@ -23,42 +23,42 @@ def process_dir(file_path):
 def plot_average_time(data, output_path):
     df = data.loc[data['period'] == 'total']
 
-    wake_het_syn21 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_wake']
-    wake_het_syn20 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_wake']
+    wake_het_syn21 = df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_wake']
+    wake_het_syn20 = df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_wake']
     wake_wt_pbs = df.loc[df['Group'] == 'WT - PBS', 'total_minutes_wake']
     wake_het_pbs = df.loc[df['Group'] == 'HET - PBS', 'total_minutes_wake']
-    nrem_het_syn21 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_nrem']
-    nrem_het_syn20 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_nrem']
+    nrem_het_syn21 = df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_nrem']
+    nrem_het_syn20 = df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_nrem']
     nrem_wt_pbs = df.loc[df['Group'] == 'WT - PBS', 'total_minutes_nrem']
     nrem_het_pbs = df.loc[df['Group'] == 'HET - PBS', 'total_minutes_nrem']
-    rem_het_syn21 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_rem']
-    rem_het_syn20 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_rem']
+    rem_het_syn21 = df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_rem']
+    rem_het_syn20 = df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_rem']
     rem_wt_pbs = df.loc[df['Group'] == 'WT - PBS', 'total_minutes_rem']
     rem_het_pbs = df.loc[df['Group'] == 'HET - PBS', 'total_minutes_rem']
 
-    wake_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_wake']))
-    wake_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_wake']))
+    wake_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_wake']))
+    wake_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_wake']))
     wake_wt_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_wake']))
     wake_het_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_wake']))
-    nrem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_nrem']))
-    nrem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_nrem']))
+    nrem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_nrem']))
+    nrem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_nrem']))
     nrem_wt_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_nrem']))
     nrem_het_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_nrem']))
-    rem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_rem']))
-    rem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_rem']))
+    rem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_rem']))
+    rem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_rem']))
     rem_wt_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_rem']))
     rem_het_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_rem']))
 
-    wake_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_wake']))/math.sqrt(8)
-    wake_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_wake']))/math.sqrt(8)
+    wake_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_wake']))/math.sqrt(8)
+    wake_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_wake']))/math.sqrt(8)
     wake_wt_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_wake']))/math.sqrt(8)
     wake_het_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_wake']))/math.sqrt(8)
-    nrem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_nrem']))/math.sqrt(8)
-    nrem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_nrem']))/math.sqrt(8)
+    nrem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_nrem']))/math.sqrt(8)
+    nrem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_nrem']))/math.sqrt(8)
     nrem_wt_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_nrem']))/math.sqrt(8)
     nrem_het_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_nrem']))/math.sqrt(8)
-    rem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_rem']))/math.sqrt(8)
-    rem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_rem']))/math.sqrt(8)
+    rem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_rem']))/math.sqrt(8)
+    rem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_rem']))/math.sqrt(8)
     rem_wt_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_rem']))/math.sqrt(8)
     rem_het_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_rem']))/math.sqrt(8)
 
@@ -141,42 +141,42 @@ def plot_average_time(data, output_path):
 def plot_average_time_light_and_dark(data, output_path):
     df = data.loc[data['period'] == 'light']
 
-    wake_het_syn21_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_wake']
-    wake_het_syn20_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_wake']
+    wake_het_syn21_light = df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_wake']
+    wake_het_syn20_light = df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_wake']
     wake_wt_pbs_light = df.loc[df['Group'] == 'WT - PBS', 'total_minutes_wake']
     wake_het_pbs_light = df.loc[df['Group'] == 'HET - PBS', 'total_minutes_wake']
-    nrem_het_syn21_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_nrem']
-    nrem_het_syn20_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_nrem']
+    nrem_het_syn21_light = df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_nrem']
+    nrem_het_syn20_light = df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_nrem']
     nrem_wt_pbs_light = df.loc[df['Group'] == 'WT - PBS', 'total_minutes_nrem']
     nrem_het_pbs_light = df.loc[df['Group'] == 'HET - PBS', 'total_minutes_nrem']
-    rem_het_syn21_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_rem']
-    rem_het_syn20_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_rem']
+    rem_het_syn21_light = df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_rem']
+    rem_het_syn20_light = df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_rem']
     rem_wt_pbs_light = df.loc[df['Group'] == 'WT - PBS', 'total_minutes_rem']
     rem_het_pbs_light = df.loc[df['Group'] == 'HET - PBS', 'total_minutes_rem']
 
-    wake_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_wake']))
-    wake_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_wake']))
+    wake_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_wake']))
+    wake_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_wake']))
     wake_wt_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_wake']))
     wake_het_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_wake']))
-    nrem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_nrem']))
-    nrem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_nrem']))
+    nrem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_nrem']))
+    nrem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_nrem']))
     nrem_wt_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_nrem']))
     nrem_het_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_nrem']))
-    rem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_rem']))
-    rem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_rem']))
+    rem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_rem']))
+    rem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_rem']))
     rem_wt_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_rem']))
     rem_het_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_rem']))
 
-    wake_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_wake']))/math.sqrt(8)
-    wake_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_wake']))/math.sqrt(8)
+    wake_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_wake']))/math.sqrt(8)
+    wake_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_wake']))/math.sqrt(8)
     wake_wt_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_wake']))/math.sqrt(8)
     wake_het_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_wake']))/math.sqrt(8)
-    nrem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_nrem']))/math.sqrt(8)
-    nrem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_nrem']))/math.sqrt(8)
+    nrem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_nrem']))/math.sqrt(8)
+    nrem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_nrem']))/math.sqrt(8)
     nrem_wt_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_nrem']))/math.sqrt(8)
     nrem_het_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_nrem']))/math.sqrt(8)
-    rem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_rem']))/math.sqrt(8)
-    rem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_rem']))/math.sqrt(8)
+    rem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_rem']))/math.sqrt(8)
+    rem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_rem']))/math.sqrt(8)
     rem_wt_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_rem']))/math.sqrt(8)
     rem_het_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_rem']))/math.sqrt(8)
 
@@ -184,42 +184,42 @@ def plot_average_time_light_and_dark(data, output_path):
 
     df = data.loc[data['period'] == 'dark']
 
-    wake_het_syn21_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_wake']
-    wake_het_syn20_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_wake']
+    wake_het_syn21_dark = df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_wake']
+    wake_het_syn20_dark = df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_wake']
     wake_wt_pbs_dark = df.loc[df['Group'] == 'WT - PBS', 'total_minutes_wake']
     wake_het_pbs_dark = df.loc[df['Group'] == 'HET - PBS', 'total_minutes_wake']
-    nrem_het_syn21_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_nrem']
-    nrem_het_syn20_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_nrem']
+    nrem_het_syn21_dark = df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_nrem']
+    nrem_het_syn20_dark = df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_nrem']
     nrem_wt_pbs_dark = df.loc[df['Group'] == 'WT - PBS', 'total_minutes_nrem']
     nrem_het_pbs_dark = df.loc[df['Group'] == 'HET - PBS', 'total_minutes_nrem']
-    rem_het_syn21_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_rem']
-    rem_het_syn20_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_rem']
+    rem_het_syn21_dark = df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_rem']
+    rem_het_syn20_dark = df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_rem']
     rem_wt_pbs_dark = df.loc[df['Group'] == 'WT - PBS', 'total_minutes_rem']
     rem_het_pbs_dark = df.loc[df['Group'] == 'HET - PBS', 'total_minutes_rem']
 
-    wake_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_wake']))
-    wake_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_wake']))
+    wake_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_wake']))
+    wake_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_wake']))
     wake_wt_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_wake']))
     wake_het_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_wake']))
-    nrem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_nrem']))
-    nrem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_nrem']))
+    nrem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_nrem']))
+    nrem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_nrem']))
     nrem_wt_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_nrem']))
     nrem_het_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_nrem']))
-    rem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_rem']))
-    rem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_rem']))
+    rem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_rem']))
+    rem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_rem']))
     rem_wt_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_rem']))
     rem_het_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_rem']))
 
-    wake_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_wake']))/math.sqrt(8)
-    wake_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_wake']))/math.sqrt(8)
+    wake_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_wake']))/math.sqrt(8)
+    wake_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_wake']))/math.sqrt(8)
     wake_wt_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_wake']))/math.sqrt(8)
     wake_het_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_wake']))/math.sqrt(8)
-    nrem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_nrem']))/math.sqrt(8)
-    nrem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_nrem']))/math.sqrt(8)
+    nrem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_nrem']))/math.sqrt(8)
+    nrem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_nrem']))/math.sqrt(8)
     nrem_wt_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_nrem']))/math.sqrt(8)
     nrem_het_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_nrem']))/math.sqrt(8)
-    rem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'total_minutes_rem']))/math.sqrt(8)
-    rem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'total_minutes_rem']))/math.sqrt(8)
+    rem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'total_minutes_rem']))/math.sqrt(8)
+    rem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'total_minutes_rem']))/math.sqrt(8)
     rem_wt_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'total_minutes_rem']))/math.sqrt(8)
     rem_het_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'total_minutes_rem']))/math.sqrt(8)
 
@@ -348,42 +348,42 @@ def plot_average_time_light_and_dark(data, output_path):
 def plot_average_bout_time(data, output_path):
     df = data.loc[data['period'] == 'total']
 
-    wake_het_syn21 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_wake']
-    wake_het_syn20 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_wake']
+    wake_het_syn21 = df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_wake']
+    wake_het_syn20 = df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_wake']
     wake_wt_pbs = df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_wake']
     wake_het_pbs = df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_wake']
-    nrem_het_syn21 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_nrem']
-    nrem_het_syn20 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_nrem']
+    nrem_het_syn21 = df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_nrem']
+    nrem_het_syn20 = df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_nrem']
     nrem_wt_pbs = df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_nrem']
     nrem_het_pbs = df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_nrem']
-    rem_het_syn21 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_rem']
-    rem_het_syn20 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_rem']
+    rem_het_syn21 = df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_rem']
+    rem_het_syn20 = df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_rem']
     rem_wt_pbs = df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_rem']
     rem_het_pbs = df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_rem']
 
-    wake_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_wake']))
-    wake_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_wake']))
+    wake_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_wake']))
+    wake_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_wake']))
     wake_wt_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_wake']))
     wake_het_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_wake']))
-    nrem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_nrem']))
-    nrem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_nrem']))
+    nrem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_nrem']))
+    nrem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_nrem']))
     nrem_wt_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_nrem']))
     nrem_het_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_nrem']))
-    rem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_rem']))
-    rem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_rem']))
+    rem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_rem']))
+    rem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_rem']))
     rem_wt_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_rem']))
     rem_het_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_rem']))
 
-    wake_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_wake']))/math.sqrt(8)
-    wake_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_wake']))/math.sqrt(8)
+    wake_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_wake']))/math.sqrt(8)
+    wake_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_wake']))/math.sqrt(8)
     wake_wt_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_wake']))/math.sqrt(8)
     wake_het_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_wake']))/math.sqrt(8)
-    nrem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_nrem']))/math.sqrt(8)
-    nrem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_nrem']))/math.sqrt(8)
+    nrem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_nrem']))/math.sqrt(8)
+    nrem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_nrem']))/math.sqrt(8)
     nrem_wt_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_nrem']))/math.sqrt(8)
     nrem_het_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_nrem']))/math.sqrt(8)
-    rem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_rem']))/math.sqrt(8)
-    rem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_rem']))/math.sqrt(8)
+    rem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_rem']))/math.sqrt(8)
+    rem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_rem']))/math.sqrt(8)
     rem_wt_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_rem']))/math.sqrt(8)
     rem_het_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_rem']))/math.sqrt(8)
 
@@ -465,84 +465,84 @@ def plot_average_bout_time(data, output_path):
 def plot_average_bout_time_light_and_dark(data, output_path):
     df = data.loc[data['period'] == 'light']
 
-    wake_het_syn21_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_wake']
-    wake_het_syn20_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_wake']
+    wake_het_syn21_light = df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_wake']
+    wake_het_syn20_light = df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_wake']
     wake_wt_pbs_light = df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_wake']
     wake_het_pbs_light = df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_wake']
-    nrem_het_syn21_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_nrem']
-    nrem_het_syn20_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_nrem']
+    nrem_het_syn21_light = df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_nrem']
+    nrem_het_syn20_light = df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_nrem']
     nrem_wt_pbs_light = df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_nrem']
     nrem_het_pbs_light = df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_nrem']
-    rem_het_syn21_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_rem']
-    rem_het_syn20_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_rem']
+    rem_het_syn21_light = df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_rem']
+    rem_het_syn20_light = df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_rem']
     rem_wt_pbs_light = df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_rem']
     rem_het_pbs_light = df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_rem']
 
-    wake_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_wake']))
-    wake_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_wake']))
+    wake_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_wake']))
+    wake_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_wake']))
     wake_wt_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_wake']))
     wake_het_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_wake']))
-    nrem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_nrem']))
-    nrem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_nrem']))
+    nrem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_nrem']))
+    nrem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_nrem']))
     nrem_wt_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_nrem']))
     nrem_het_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_nrem']))
-    rem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_rem']))
-    rem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_rem']))
+    rem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_rem']))
+    rem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_rem']))
     rem_wt_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_rem']))
     rem_het_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_rem']))
 
-    wake_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_wake']))/math.sqrt(8)
-    wake_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_wake']))/math.sqrt(8)
+    wake_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_wake']))/math.sqrt(8)
+    wake_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_wake']))/math.sqrt(8)
     wake_wt_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_wake']))/math.sqrt(8)
     wake_het_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_wake']))/math.sqrt(8)
-    nrem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_nrem']))/math.sqrt(8)
-    nrem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_nrem']))/math.sqrt(8)
+    nrem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_nrem']))/math.sqrt(8)
+    nrem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_nrem']))/math.sqrt(8)
     nrem_wt_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_nrem']))/math.sqrt(8)
     nrem_het_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_nrem']))/math.sqrt(8)
-    rem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_rem']))/math.sqrt(8)
-    rem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_rem']))/math.sqrt(8)
+    rem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_rem']))/math.sqrt(8)
+    rem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_rem']))/math.sqrt(8)
     rem_wt_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_rem']))/math.sqrt(8)
     rem_het_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_rem']))/math.sqrt(8)
 
 
     df = data.loc[data['period'] == 'dark']
 
-    wake_het_syn21_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_wake']
-    wake_het_syn20_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_wake']
+    wake_het_syn21_dark = df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_wake']
+    wake_het_syn20_dark = df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_wake']
     wake_wt_pbs_dark = df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_wake']
     wake_het_pbs_dark = df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_wake']
-    nrem_het_syn21_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_nrem']
-    nrem_het_syn20_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_nrem']
+    nrem_het_syn21_dark = df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_nrem']
+    nrem_het_syn20_dark = df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_nrem']
     nrem_wt_pbs_dark = df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_nrem']
     nrem_het_pbs_dark = df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_nrem']
-    rem_het_syn21_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_rem']
-    rem_het_syn20_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_rem']
+    rem_het_syn21_dark = df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_rem']
+    rem_het_syn20_dark = df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_rem']
     rem_wt_pbs_dark = df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_rem']
     rem_het_pbs_dark = df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_rem']
 
-    wake_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_wake']))
-    wake_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_wake']))
+    wake_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_wake']))
+    wake_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_wake']))
     wake_wt_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_wake']))
     wake_het_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_wake']))
-    nrem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_nrem']))
-    nrem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_nrem']))
+    nrem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_nrem']))
+    nrem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_nrem']))
     nrem_wt_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_nrem']))
     nrem_het_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_nrem']))
-    rem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_rem']))
-    rem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_rem']))
+    rem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_rem']))
+    rem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_rem']))
     rem_wt_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_rem']))
     rem_het_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_rem']))
 
-    wake_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_wake']))/math.sqrt(8)
-    wake_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_wake']))/math.sqrt(8)
+    wake_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_wake']))/math.sqrt(8)
+    wake_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET -SYN20', 'avg_bout_duration_wake']))/math.sqrt(8)
     wake_wt_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_wake']))/math.sqrt(8)
     wake_het_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_wake']))/math.sqrt(8)
-    nrem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_nrem']))/math.sqrt(8)
-    nrem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_nrem']))/math.sqrt(8)
+    nrem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_nrem']))/math.sqrt(8)
+    nrem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_nrem']))/math.sqrt(8)
     nrem_wt_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_nrem']))/math.sqrt(8)
     nrem_het_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_nrem']))/math.sqrt(8)
-    rem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'avg_bout_duration_rem']))/math.sqrt(8)
-    rem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'avg_bout_duration_rem']))/math.sqrt(8)
+    rem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'avg_bout_duration_rem']))/math.sqrt(8)
+    rem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'avg_bout_duration_rem']))/math.sqrt(8)
     rem_wt_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'avg_bout_duration_rem']))/math.sqrt(8)
     rem_het_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'avg_bout_duration_rem']))/math.sqrt(8)
 
@@ -616,7 +616,7 @@ def plot_average_bout_time_light_and_dark(data, output_path):
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
-    plt.axhline(y=210, xmin =0.518, xmax=1, color='k', linewidth=5, alpha=0.85, zorder=0)
+    plt.axhline(y=160, xmin =0.518, xmax=1, color='k', linewidth=5, alpha=0.85, zorder=0)
     #text(0.25, 0.95, 'Light', horizontalalignment='center',
          #verticalalignment='center', transform=ax.transAxes)
     #text(0.75, 0.95, 'Dark', horizontalalignment='center',
@@ -656,7 +656,7 @@ def plot_average_bout_time_light_and_dark(data, output_path):
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
-    plt.axhline(y=120, xmin =0.518, xmax=1, color='k', linewidth=5, alpha=0.85, zorder=0)
+    plt.axhline(y=70, xmin =0.518, xmax=1, color='k', linewidth=5, alpha=0.85, zorder=0)
     #text(0.25, 0.95, 'Light', horizontalalignment='center',
          #verticalalignment='center', transform=ax.transAxes)
     #text(0.75, 0.95, 'Dark', horizontalalignment='center',
@@ -671,42 +671,42 @@ def plot_average_bout_time_light_and_dark(data, output_path):
 def plot_average_bouts(data, output_path):
     df = data.loc[data['period'] == 'total']
 
-    wake_het_syn21 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_wake']
-    wake_het_syn20 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_wake']
+    wake_het_syn21 = df.loc[df['Group'] == 'HET - SYN21', 'bout_num_wake']
+    wake_het_syn20 = df.loc[df['Group'] == 'HET - SYN20', 'bout_num_wake']
     wake_wt_pbs = df.loc[df['Group'] == 'WT - PBS', 'bout_num_wake']
     wake_het_pbs = df.loc[df['Group'] == 'HET - PBS', 'bout_num_wake']
-    nrem_het_syn21 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_nrem']
-    nrem_het_syn20 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_nrem']
+    nrem_het_syn21 = df.loc[df['Group'] == 'HET - SYN21', 'bout_num_nrem']
+    nrem_het_syn20 = df.loc[df['Group'] == 'HET - SYN20', 'bout_num_nrem']
     nrem_wt_pbs = df.loc[df['Group'] == 'WT - PBS', 'bout_num_nrem']
     nrem_het_pbs = df.loc[df['Group'] == 'HET - PBS', 'bout_num_nrem']
-    rem_het_syn21 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_rem']
-    rem_het_syn20 = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_rem']
+    rem_het_syn21 = df.loc[df['Group'] == 'HET - SYN21', 'bout_num_rem']
+    rem_het_syn20 = df.loc[df['Group'] == 'HET - SYN20', 'bout_num_rem']
     rem_wt_pbs = df.loc[df['Group'] == 'WT - PBS', 'bout_num_rem']
     rem_het_pbs = df.loc[df['Group'] == 'HET - PBS', 'bout_num_rem']
 
-    wake_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_wake']))
-    wake_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_wake']))
+    wake_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_wake']))
+    wake_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_wake']))
     wake_wt_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_wake']))
     wake_het_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_wake']))
-    nrem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_nrem']))
-    nrem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_nrem']))
+    nrem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_nrem']))
+    nrem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_nrem']))
     nrem_wt_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_nrem']))
     nrem_het_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_nrem']))
-    rem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_rem']))
-    rem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_rem']))
+    rem_het_syn21_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_rem']))
+    rem_het_syn20_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_rem']))
     rem_wt_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_rem']))
     rem_het_pbs_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_rem']))
 
-    wake_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_wake']))/math.sqrt(8)
-    wake_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_wake']))/math.sqrt(8)
+    wake_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_wake']))/math.sqrt(8)
+    wake_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_wake']))/math.sqrt(8)
     wake_wt_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_wake']))/math.sqrt(8)
     wake_het_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_wake']))/math.sqrt(8)
-    nrem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_nrem']))/math.sqrt(8)
-    nrem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_nrem']))/math.sqrt(8)
+    nrem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_nrem']))/math.sqrt(8)
+    nrem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_nrem']))/math.sqrt(8)
     nrem_wt_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_nrem']))/math.sqrt(8)
     nrem_het_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_nrem']))/math.sqrt(8)
-    rem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_rem']))/math.sqrt(8)
-    rem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_rem']))/math.sqrt(8)
+    rem_het_syn21_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_rem']))/math.sqrt(8)
+    rem_het_syn20_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_rem']))/math.sqrt(8)
     rem_wt_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_rem']))/math.sqrt(8)
     rem_het_pbs_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_rem']))/math.sqrt(8)
 
@@ -785,42 +785,42 @@ def plot_average_bouts(data, output_path):
 def plot_average_bouts_light_and_dark(data, output_path):
     df = data.loc[data['period'] == 'light']
 
-    wake_het_syn21_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_wake']
-    wake_het_syn20_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_wake']
+    wake_het_syn21_light = df.loc[df['Group'] == 'HET - SYN21', 'bout_num_wake']
+    wake_het_syn20_light = df.loc[df['Group'] == 'HET - SYN20', 'bout_num_wake']
     wake_wt_pbs_light = df.loc[df['Group'] == 'WT - PBS', 'bout_num_wake']
     wake_het_pbs_light = df.loc[df['Group'] == 'HET - PBS', 'bout_num_wake']
-    nrem_het_syn21_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_nrem']
-    nrem_het_syn20_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_nrem']
+    nrem_het_syn21_light = df.loc[df['Group'] == 'HET - SYN21', 'bout_num_nrem']
+    nrem_het_syn20_light = df.loc[df['Group'] == 'HET - SYN20', 'bout_num_nrem']
     nrem_wt_pbs_light = df.loc[df['Group'] == 'WT - PBS', 'bout_num_nrem']
     nrem_het_pbs_light = df.loc[df['Group'] == 'HET - PBS', 'bout_num_nrem']
-    rem_het_syn21_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_rem']
-    rem_het_syn20_light = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_rem']
+    rem_het_syn21_light = df.loc[df['Group'] == 'HET - SYN21', 'bout_num_rem']
+    rem_het_syn20_light = df.loc[df['Group'] == 'HET - SYN20', 'bout_num_rem']
     rem_wt_pbs_light = df.loc[df['Group'] == 'WT - PBS', 'bout_num_rem']
     rem_het_pbs_light = df.loc[df['Group'] == 'HET - PBS', 'bout_num_rem']
 
-    wake_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_wake']))
-    wake_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_wake']))
+    wake_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_wake']))
+    wake_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_wake']))
     wake_wt_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_wake']))
     wake_het_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_wake']))
-    nrem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_nrem']))
-    nrem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_nrem']))
+    nrem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_nrem']))
+    nrem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_nrem']))
     nrem_wt_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_nrem']))
     nrem_het_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_nrem']))
-    rem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_rem']))
-    rem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_rem']))
+    rem_het_syn21_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_rem']))
+    rem_het_syn20_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_rem']))
     rem_wt_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_rem']))
     rem_het_pbs_light_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_rem']))
 
-    wake_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_wake']))/math.sqrt(8)
-    wake_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_wake']))/math.sqrt(8)
+    wake_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_wake']))/math.sqrt(8)
+    wake_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_wake']))/math.sqrt(8)
     wake_wt_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_wake']))/math.sqrt(8)
     wake_het_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_wake']))/math.sqrt(8)
-    nrem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_nrem']))/math.sqrt(8)
-    nrem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_nrem']))/math.sqrt(8)
+    nrem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_nrem']))/math.sqrt(8)
+    nrem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_nrem']))/math.sqrt(8)
     nrem_wt_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_nrem']))/math.sqrt(8)
     nrem_het_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_nrem']))/math.sqrt(8)
-    rem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_rem']))/math.sqrt(8)
-    rem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_rem']))/math.sqrt(8)
+    rem_het_syn21_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_rem']))/math.sqrt(8)
+    rem_het_syn20_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_rem']))/math.sqrt(8)
     rem_wt_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_rem']))/math.sqrt(8)
     rem_het_pbs_light_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_rem']))/math.sqrt(8)
 
@@ -828,42 +828,42 @@ def plot_average_bouts_light_and_dark(data, output_path):
 
     df = data.loc[data['period'] == 'dark']
 
-    wake_het_syn21_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_wake']
-    wake_het_syn20_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_wake']
+    wake_het_syn21_dark = df.loc[df['Group'] == 'HET - SYN21', 'bout_num_wake']
+    wake_het_syn20_dark = df.loc[df['Group'] == 'HET - SYN20', 'bout_num_wake']
     wake_wt_pbs_dark = df.loc[df['Group'] == 'WT - PBS', 'bout_num_wake']
     wake_het_pbs_dark = df.loc[df['Group'] == 'HET - PBS', 'bout_num_wake']
-    nrem_het_syn21_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_nrem']
-    nrem_het_syn20_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_nrem']
+    nrem_het_syn21_dark = df.loc[df['Group'] == 'HET - SYN21', 'bout_num_nrem']
+    nrem_het_syn20_dark = df.loc[df['Group'] == 'HET - SYN20', 'bout_num_nrem']
     nrem_wt_pbs_dark = df.loc[df['Group'] == 'WT - PBS', 'bout_num_nrem']
     nrem_het_pbs_dark = df.loc[df['Group'] == 'HET - PBS', 'bout_num_nrem']
-    rem_het_syn21_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_rem']
-    rem_het_syn20_dark = df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_rem']
+    rem_het_syn21_dark = df.loc[df['Group'] == 'HET - SYN21', 'bout_num_rem']
+    rem_het_syn20_dark = df.loc[df['Group'] == 'HET - SYN20', 'bout_num_rem']
     rem_wt_pbs_dark = df.loc[df['Group'] == 'WT - PBS', 'bout_num_rem']
     rem_het_pbs_dark = df.loc[df['Group'] == 'HET - PBS', 'bout_num_rem']
 
-    wake_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_wake']))
-    wake_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_wake']))
+    wake_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_wake']))
+    wake_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_wake']))
     wake_wt_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_wake']))
     wake_het_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_wake']))
-    nrem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_nrem']))
-    nrem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_nrem']))
+    nrem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_nrem']))
+    nrem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_nrem']))
     nrem_wt_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_nrem']))
     nrem_het_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_nrem']))
-    rem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_rem']))
-    rem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_rem']))
+    rem_het_syn21_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_rem']))
+    rem_het_syn20_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_rem']))
     rem_wt_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_rem']))
     rem_het_pbs_dark_mean = np.nanmean(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_rem']))
 
-    wake_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_wake']))/math.sqrt(8)
-    wake_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_wake']))/math.sqrt(8)
+    wake_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_wake']))/math.sqrt(8)
+    wake_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_wake']))/math.sqrt(8)
     wake_wt_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_wake']))/math.sqrt(8)
     wake_het_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_wake']))/math.sqrt(8)
-    nrem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_nrem']))/math.sqrt(8)
-    nrem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_nrem']))/math.sqrt(8)
+    nrem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_nrem']))/math.sqrt(8)
+    nrem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_nrem']))/math.sqrt(8)
     nrem_wt_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_nrem']))/math.sqrt(8)
     nrem_het_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_nrem']))/math.sqrt(8)
-    rem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN21', 'bout_num_rem']))/math.sqrt(8)
-    rem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - UPV-AAV9/SYN20', 'bout_num_rem']))/math.sqrt(8)
+    rem_het_syn21_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN21', 'bout_num_rem']))/math.sqrt(8)
+    rem_het_syn20_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - SYN20', 'bout_num_rem']))/math.sqrt(8)
     rem_wt_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'WT - PBS', 'bout_num_rem']))/math.sqrt(8)
     rem_het_pbs_dark_sd = np.nanstd(np.array(df.loc[df['Group'] == 'HET - PBS', 'bout_num_rem']))/math.sqrt(8)
 
@@ -989,10 +989,10 @@ def plot_average_bouts_light_and_dark(data, output_path):
 
 
 def plot_average_time_over_hours(df, output_path):
-    wake_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
+    wake_het_syn21 = df[(df['Group'] == 'HET - SYN21')]
     wake_het_syn21_mean = np.array(wake_het_syn21.groupby('hour_of_day')['wake_minutes_per_hour'].mean())
     wake_het_syn21_sd = np.array(wake_het_syn21.groupby('hour_of_day')['wake_minutes_per_hour'].sem())
-    wake_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
+    wake_het_syn20 = df[(df['Group'] == 'HET - SYN20')]
     wake_het_syn20_mean = np.array(wake_het_syn20.groupby('hour_of_day')['wake_minutes_per_hour'].mean())
     wake_het_syn20_sd = np.array(wake_het_syn20.groupby('hour_of_day')['wake_minutes_per_hour'].sem())
     wake_het_pbs = df[(df['Group'] == 'HET - PBS')]
@@ -1002,10 +1002,10 @@ def plot_average_time_over_hours(df, output_path):
     wake_wt_pbs_mean = np.array(wake_wt_pbs.groupby('hour_of_day')['wake_minutes_per_hour'].mean())
     wake_wt_pbs_sd = np.array(wake_wt_pbs.groupby('hour_of_day')['wake_minutes_per_hour'].sem())
 
-    nrem_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
+    nrem_het_syn21 = df[(df['Group'] == 'HET - SYN21')]
     nrem_het_syn21_mean = np.array(nrem_het_syn21.groupby('hour_of_day')['nrem_minutes_per_hour'].mean())
     nrem_het_syn21_sd = np.array(nrem_het_syn21.groupby('hour_of_day')['nrem_minutes_per_hour'].sem())
-    nrem_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
+    nrem_het_syn20 = df[(df['Group'] == 'HET - SYN20')]
     nrem_het_syn20_mean = np.array(nrem_het_syn20.groupby('hour_of_day')['nrem_minutes_per_hour'].mean())
     nrem_het_syn20_sd = np.array(nrem_het_syn20.groupby('hour_of_day')['nrem_minutes_per_hour'].sem())
     nrem_het_pbs = df[(df['Group'] == 'HET - PBS')]
@@ -1015,10 +1015,10 @@ def plot_average_time_over_hours(df, output_path):
     nrem_wt_pbs_mean = np.array(nrem_wt_pbs.groupby('hour_of_day')['nrem_minutes_per_hour'].mean())
     nrem_wt_pbs_sd = np.array(nrem_wt_pbs.groupby('hour_of_day')['nrem_minutes_per_hour'].sem())
 
-    rem_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
+    rem_het_syn21 = df[(df['Group'] == 'HET - SYN21')]
     rem_het_syn21_mean = np.array(rem_het_syn21.groupby('hour_of_day')['rem_minutes_per_hour'].mean())
     rem_het_syn21_sd = np.array(rem_het_syn21.groupby('hour_of_day')['rem_minutes_per_hour'].sem())
-    rem_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
+    rem_het_syn20 = df[(df['Group'] == 'HET - SYN20')]
     rem_het_syn20_mean = np.array(rem_het_syn20.groupby('hour_of_day')['rem_minutes_per_hour'].mean())
     rem_het_syn20_sd = np.array(rem_het_syn20.groupby('hour_of_day')['rem_minutes_per_hour'].sem())
     rem_het_pbs = df[(df['Group'] == 'HET - PBS')]
@@ -1112,10 +1112,10 @@ def plot_average_time_over_hours(df, output_path):
 
 
 def plot_average_bouts_over_hours(df, output_path):
-    wake_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
+    wake_het_syn21 = df[(df['Group'] == 'HET - SYN21')]
     wake_het_syn21_mean = np.array(wake_het_syn21.groupby('hour_of_day')['wake_bout_duration_per_hour'].mean())
     wake_het_syn21_sd = np.array(wake_het_syn21.groupby('hour_of_day')['wake_bout_duration_per_hour'].sem())
-    wake_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
+    wake_het_syn20 = df[(df['Group'] == 'HET - SYN20')]
     wake_het_syn20_mean = np.array(wake_het_syn20.groupby('hour_of_day')['wake_bout_duration_per_hour'].mean())
     wake_het_syn20_sd = np.array(wake_het_syn20.groupby('hour_of_day')['wake_bout_duration_per_hour'].sem())
     wake_het_pbs = df[(df['Group'] == 'HET - PBS')]
@@ -1125,10 +1125,10 @@ def plot_average_bouts_over_hours(df, output_path):
     wake_wt_pbs_mean = np.array(wake_wt_pbs.groupby('hour_of_day')['wake_bout_duration_per_hour'].mean())
     wake_wt_pbs_sd = np.array(wake_wt_pbs.groupby('hour_of_day')['wake_bout_duration_per_hour'].sem())
 
-    nrem_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
+    nrem_het_syn21 = df[(df['Group'] == 'HET - SYN21')]
     nrem_het_syn21_mean = np.array(nrem_het_syn21.groupby('hour_of_day')['nrem_bout_duration_per_hour'].mean())
     nrem_het_syn21_sd = np.array(nrem_het_syn21.groupby('hour_of_day')['nrem_bout_duration_per_hour'].sem())
-    nrem_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
+    nrem_het_syn20 = df[(df['Group'] == 'HET - SYN20')]
     nrem_het_syn20_mean = np.array(nrem_het_syn20.groupby('hour_of_day')['nrem_bout_duration_per_hour'].mean())
     nrem_het_syn20_sd = np.array(nrem_het_syn20.groupby('hour_of_day')['nrem_bout_duration_per_hour'].sem())
     nrem_het_pbs = df[(df['Group'] == 'HET - PBS')]
@@ -1138,10 +1138,10 @@ def plot_average_bouts_over_hours(df, output_path):
     nrem_wt_pbs_mean = np.array(nrem_wt_pbs.groupby('hour_of_day')['nrem_bout_duration_per_hour'].mean())
     nrem_wt_pbs_sd = np.array(nrem_wt_pbs.groupby('hour_of_day')['nrem_bout_duration_per_hour'].sem())
 
-    rem_het_syn21 = df[(df['Group'] == 'HET - UPV-AAV9/SYN21')]
+    rem_het_syn21 = df[(df['Group'] == 'HET - SYN21')]
     rem_het_syn21_mean = np.array(rem_het_syn21.groupby('hour_of_day')['rem_bout_duration_per_hour'].mean())
     rem_het_syn21_sd = np.array(rem_het_syn21.groupby('hour_of_day')['rem_bout_duration_per_hour'].sem())
-    rem_het_syn20 = df[(df['Group'] == 'HET - UPV-AAV9/SYN20')]
+    rem_het_syn20 = df[(df['Group'] == 'HET - SYN20')]
     rem_het_syn20_mean = np.array(rem_het_syn20.groupby('hour_of_day')['rem_bout_duration_per_hour'].mean())
     rem_het_syn20_sd = np.array(rem_het_syn20.groupby('hour_of_day')['rem_bout_duration_per_hour'].sem())
     rem_het_pbs = df[(df['Group'] == 'HET - PBS')]
@@ -1239,9 +1239,9 @@ def main():
     print('-------------------------------------------------------------')
 
     #path to the recording .dat file
-    overall_data_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/analysis_all_animals_17W.csv'
-    hourly_data_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/analysis_hour_by_hour_all_animals_17W.csv'
-    output_path = '/Volumes/Sarah/SYNGAPE8/OUTPUT/SYNGAPE8/17W/'
+    overall_data_path = '/Volumes/Sarah/SYNGAPE8/analysis_all_animals_avg2.csv'
+    hourly_data_path = '/Volumes/Sarah/SYNGAPE8/analysis_hour_by_hour_all_animals_avg2.csv'
+    output_path = '/Volumes/Sarah/SYNGAPE8/'
 
     # LOAD DATA
     overall_data = process_dir(overall_data_path) # overall data
